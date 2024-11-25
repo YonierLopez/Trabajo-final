@@ -1,0 +1,97 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #808080;
+    padding: 10px 20px;
+    position: relative; /* Asegura que el contenido no se desborde cuando el menú se despliegue */
+}
+
+.logo img {
+    height: 80px; /* Aumenté el tamaño del logo */
+}
+
+.title {
+    text-align: center;
+    color: white;
+}
+
+.title span {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.title small {
+    display: block;
+    font-size: 0.8em;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.profile-icon, .language, .hamburger-icon {
+    font-size: 1.2em;
+    color: white;
+    cursor: pointer;
+}
+
+/* Estilos para el checkbox y el ícono de hamburguesa */
+#menu-toggle {
+    display: none;
+}
+
+.hamburger-icon {
+    display: none;
+    font-size: 1.5em;
+}
+
+/* Responsivo: mostrar el ícono de hamburguesa en pantallas pequeñas */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        background-color: #808080;
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        z-index: 10; /* Asegura que el menú se ponga por encima */
+    }
+
+    .hamburger-icon {
+        display: block;
+    }
+
+    /* Mostrar el menú cuando el checkbox está activado */
+    #menu-toggle:checked + .hamburger-icon + .nav-links {
+        display: flex;
+    }
+}
