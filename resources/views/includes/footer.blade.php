@@ -19,7 +19,7 @@ font-family: Arial, sans-serif;
 }
 
 footer {
-background-color: #808080;
+background-color: #8d6e63;
 color: white;
 padding: 20px 0;
 text-align: center;
@@ -94,39 +94,29 @@ justify-content: center;
 </head>
 <body>
     <footer>
-        <div class="footer-top">
-            <img src="https://via.placeholder.com/150x50" alt="Logo Comercio Industria y Turismo">
-            <img src="https://via.placeholder.com/150x50" alt="Logo Procolombia">
-        </div>
+
         <div class="footer-bottom">
             <div class="footer-section">
                 <h4>LÍNEAS DE ATENCIÓN</h4>
-                <p>Calle 28 No 13A - 15 Piso 35-36<br>Bogotá - Colombia</p>
-                <p>+57 601 5600100</p>
+                <p>Calle  No  #-#  Piso #-#<br>Popayán - Colombia</p>
+                <p>+57 347776049</p>
                 <p>Fax: +57 601 5600104</p>
                 <p>Lun - Vi 8:30 A.M. - 5:30 P.M</p>
             </div>
             <div class="footer-section">
                 <h4>NUESTROS EJES</h4>
-                <p>Procolombia</p>
-                <p>Inversión</p>
-                <p>Exportaciones</p>
+                <p>Morro</p>
+                <p>Parque Caldas</p>
+                <p>Esmeralda</p>
                 <p>Turismo</p>
                 <p>Marca País</p>
             </div>
             <div class="footer-section">
                 <h4>ENLACES DE INTERÉS</h4>
-                <p>Servicios al Ciudadano</p>
-                <p>Informe de sostenibilidad</p>
-                <p>Preguntas frecuentes</p>
-                <p>PQRS</p>
-                <p>Contacto</p>
-            </div>
-            <div class="footer-social">
-                <span>Facebook</span>
-                <span>Instagram</span>
-                <span>YouTube</span>
-                <span>Other</span>
+                <p><a href="{{ route('inicio') }}">INICIO</a></p>
+                <p><a href="{{ route('sobreNosotros') }}">SOBRE NOSOTROS</a></p>
+                <p><a href="{{ route('planesTuristicos') }}">PLANES TURISTICOS</a></p>
+                <p><a href="{{ route('contacto') }}">CONTACTO</a></p>
             </div>
         </div>
     </footer>

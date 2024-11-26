@@ -27,11 +27,10 @@
                     </div>
                 </header>
             @endisset
+            <div class="content">
+    @yield('content')
+  </div>
 
-            <main>
-                {{slot}}
-            </main>
-           
 
             @include('includes.footer')
         </div>
