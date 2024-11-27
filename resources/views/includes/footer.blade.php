@@ -7,88 +7,87 @@
     <link href="{{ asset('resources-css-footer.css') }}" rel="stylesheet">
 
     <style>
-        
-* {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-body {
-font-family: Arial, sans-serif;
-}
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh; /* Asegura que el body ocupe todo el alto de la pantalla */
+            display: flex;
+            flex-direction: column;
+        }
 
-footer {
-background-color: #8d6e63;
-color: white;
-padding: 20px 0;
-text-align: center;
-}
+        footer {
+            background-color: #b38a7a;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            flex: 1; /* Asegura que el footer ocupe el espacio disponible */
+        }
 
-.footer-top {
-display: flex;
-justify-content: center;
-gap: 50px;
-padding: 20px 0;
-background-color: #f2f2f2;
-}
+        .footer-bottom {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 20px 10px;
+        }
 
-.footer-top img {
-height: 50px;
-}
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+        }
 
-.footer-bottom {
-display: flex;
-justify-content: space-around;
-flex-wrap: wrap;
-gap: 20px;
-padding: 20px 10px;
-}
+        .footer-section h4 {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
 
-.footer-section {
-flex: 1;
-min-width: 200px;
-}
+        .footer-section p {
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
 
-.footer-section h4 {
-font-size: 1.1em;
-margin-bottom: 10px;
-}
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            font-size: 1.5em;
+            padding-top: 20px;
+        }
 
-.footer-section p {
-margin-bottom: 5px;
-font-size: 0.9em;
-}
+        /* Estilo para el copywriting al final */
+        .footer-copy {
+            font-size: 0.9em;
+            color: #ddd;
+            background-color: black;
+            width: 100%;  /* Asegura que ocupe todo el ancho */
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0; /* Asegura que quede pegado al final */
+            left: 0;
+        }
 
-.footer-social {
-display: flex;
-justify-content: center;
-gap: 15px;
-font-size: 1.5em;
-padding-top: 20px;
-}
+        /* Responsivo para pantallas pequeñas */
+        @media (max-width: 768px) {
 
-/* Responsivo para pantallas pequeñas */
-@media (max-width: 768px) {
-.footer-top {
-flex-direction: column;
-align-items: center;
-}
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
 
-.footer-bottom {
-flex-direction: column;
-text-align: center;
-}
+            .footer-section {
+                text-align: center;
+            }
 
-.footer-section {
-text-align: center;
-}
-
-.footer-social {
-justify-content: center;
-}
-}
-
+            .footer-social {
+                justify-content: center;
+            }
+        }
     </style>
 
 </head>
@@ -120,5 +119,10 @@ justify-content: center;
             </div>
         </div>
     </footer>
+
+    <!-- Copywriting -->
+    <div class="footer-copy">
+        <p>&copy; 2024 Tu Empresa. Todos los derechos reservados.</p>
+    </div>
 </body>
 </html>

@@ -22,7 +22,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background-color: #8d6e63; /* Fondo de color solicitado */
+            background-color: #8d6150; /* Fondo de color solicitado */
             padding: 10px 20px;
             position: relative;
         }
@@ -71,7 +71,7 @@
             color: white;
             text-decoration: none;
             font-weight: bold;
-            background-color: #a1887f; /* Fondo diferente para los enlaces */
+            background-color: #644336; /* Fondo diferente para los enlaces */
             padding: 10px 15px;
             border-radius: 5px;
             transition: background-color 0.3s;

@@ -9,11 +9,15 @@
   <title>Slider Mejorado</title>
 
   <style>
+
+    .colorr {
+      background-color: #95604e;
+      padding-top: 40px; /* Para que el espacio entre el slider y el navbar se vea con color */
+      padding-bottom: 40px; 
+    }
     /* Fondo del body fuera del slider */
     body {
-      background-color: #2f2f2f; /* Gris oscuro para el fondo */
       font-family: Arial, sans-serif; /* Fuente para el cuerpo */
-      color: #ddd; /* Texto en color claro para resaltar sobre el fondo oscuro */
       margin: 0;
       padding: 0;
     }
@@ -21,8 +25,8 @@
     /* Estilo principal del slider */
     .slider {
       width: 100%; /* 100% del ancho */
-      max-width: 1200px; /* Máximo ancho de 900px */
-      margin: 40px auto 40px; /* Separar 40px del navbar y del footer */
+      max-width: 1200px; /* Máximo ancho de 1200px */
+      margin: 40px auto; /* Separar 40px del navbar y del footer */
       overflow: hidden;
       border: 4px double #a88275; /* Borde color acorde */
       border-radius: 20px; /* Bordes redondeados */
@@ -37,20 +41,21 @@
       display: flex;
       padding: 0;
       margin: 0;
-      width: 400%; /* Aumenta el ancho total para que los elementos se alineen uno al lado del otro */
-      animation: cambio 15s infinite alternate linear; /* Animación más rápida de 8 segundos */
+      transition: transform 1s ease-in-out; /* Transición suave al mover las imágenes */
+      width: 400%; /* El ancho total es el 400% del contenedor para 4 imágenes */
     }
 
     /* Estilo para cada elemento de la lista (cada imagen) */
     .slider li {
-      width: 100%; /* Cada imagen ocupa el 100% del contenedor */
+      width: 25%; /* Cada imagen ocupa el 25% del contenedor (para mostrar 1 imagen a la vez) */
       list-style: none;
     }
 
     /* Estilo para las imágenes */
     .slider img {
       width: 100%; /* Asegura que las imágenes llenen el contenedor */
-      height: auto; /* Mantiene la proporción original */
+      height: 500px; /* Altura fija para que todas las imágenes tengan el mismo tamaño */
+      object-fit: cover; /* Mantiene la proporción y llena el contenedor sin distorsionar */
       border-radius: 15px; /* Bordes redondeados para las imágenes */
       box-shadow: 0 0 30px rgba(0, 0, 0, 0.5); /* Sombra en las imágenes */
       transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Efectos de transformación y sombra */
@@ -60,15 +65,6 @@
     .slider img:hover {
       transform: scale(1.1); /* Aumenta el tamaño de la imagen */
       box-shadow: 0 0 40px rgba(255, 255, 255, 0.7); /* Resalta con brillo */
-    }
-
-    /* Animación para cambiar entre imágenes */
-    @keyframes cambio {
-      0% { margin-left: 0; }
-      25% { margin-left: -100%; }
-      50% { margin-left: -200%; }
-      75% { margin-left: -300%; }
-      100% { margin-left: -400%; }
     }
 
     /* Estilo de las flechas de navegación */
@@ -111,6 +107,8 @@
 </head>
 <body>
 
+<div class="colorr">
+
   <!-- Contenedor del slider con bordes exóticos -->
   <div class="slider">
     <ul>
@@ -119,7 +117,6 @@
       <li><img src="https://elextra.co/wp-content/uploads/2024/05/turismo.jpg" alt="Imagen 3"></li>
       <li><img src="https://pluralidadz.com/wp-content/uploads/2021/09/Turismo-Colombia.jpg" alt="Imagen 4"></li>
     </ul>
-
     <!-- Flechas de navegación -->
     <button class="prev">&#10094;</button>
     <button class="next">&#10095;</button>
@@ -133,23 +130,23 @@
     let currentIndex = 0;
     const totalImages = slider.children.length;
 
+    // Función para mostrar la imagen anterior
     function showPrev() {
       currentIndex = (currentIndex === 0) ? totalImages - 1 : currentIndex - 1;
-      slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+      slider.style.transform = `translateX(-${currentIndex * 25}%)`; /* 25% porque hay 4 imágenes */
     }
 
+    // Función para mostrar la siguiente imagen
     function showNext() {
       currentIndex = (currentIndex === totalImages - 1) ? 0 : currentIndex + 1;
-      slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+      slider.style.transform = `translateX(-${currentIndex * 25}%)`; /* 25% porque hay 4 imágenes */
     }
 
+    // Asignación de eventos para las flechas
     prevButton.addEventListener('click', showPrev);
     nextButton.addEventListener('click', showNext);
-
-    // Avanzar automáticamente cada 3 segundos
-    setInterval(showNext, 3000);
   </script>
-
+</div>
 </body>
 </html>
 
