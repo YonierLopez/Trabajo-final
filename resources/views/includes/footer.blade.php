@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Footer</title> 
+    <title>Footer Mejorado</title>
     <link href="{{ asset('resources-css-footer.css') }}" rel="stylesheet">
 
     <style>
@@ -21,11 +21,10 @@
         }
 
         footer {
-            background-color: #b38a7a;
+            background-color: #274c77; /* Azul oscuro consistente */
             color: white;
             padding: 20px 0;
             text-align: center;
-            flex: 1; /* Asegura que el footer ocupe el espacio disponible */
         }
 
         .footer-bottom {
@@ -42,13 +41,22 @@
         }
 
         .footer-section h4 {
-            font-size: 1.1em;
-            margin-bottom: 10px;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            color: #80b3ff; /* Azul brillante */
         }
 
-        .footer-section p {
+        .footer-section p,
+        .footer-section a {
             margin-bottom: 5px;
-            font-size: 0.9em;
+            font-size: 0.95em;
+            color: #ddd; /* Gris claro */
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: #80b3ff; /* Azul brillante */
+            text-decoration: underline;
         }
 
         .footer-social {
@@ -63,18 +71,14 @@
         .footer-copy {
             font-size: 0.9em;
             color: #ddd;
-            background-color: black;
-            width: 100%;  /* Asegura que ocupe todo el ancho */
+            background-color: #000; /* Negro sólido */
+            width: 100%; /* Asegura que ocupe todo el ancho */
             text-align: center;
             padding: 10px 0;
-            position: fixed;
-            bottom: 0; /* Asegura que quede pegado al final */
-            left: 0;
         }
 
         /* Responsivo para pantallas pequeñas */
         @media (max-width: 768px) {
-
             .footer-bottom {
                 flex-direction: column;
                 text-align: center;
@@ -89,15 +93,13 @@
             }
         }
     </style>
-
 </head>
 <body>
     <footer>
-
         <div class="footer-bottom">
             <div class="footer-section">
                 <h4>LÍNEAS DE ATENCIÓN</h4>
-                <p>Calle  No  #-#  Piso #-#<br>Popayán - Colombia</p>
+                <p>Calle No #-# Piso #-#<br>Popayán - Colombia</p>
                 <p>+57 347776049</p>
                 <p>Fax: +57 601 5600104</p>
                 <p>Lun - Vi 8:30 A.M. - 5:30 P.M</p>

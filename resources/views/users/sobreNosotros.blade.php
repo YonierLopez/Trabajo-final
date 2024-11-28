@@ -1,7 +1,5 @@
 @extends('layouts.app')
-
 @section('content')
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -15,7 +13,7 @@
         background-color: #95604e;
         padding-bottom: 40px; /* Asegura que haya suficiente espacio debajo de la sección */
     }
-    
+  
     body {
       margin: 0;
       padding: 0;
@@ -26,7 +24,6 @@
       flex-direction: column;
       min-height: 100vh; /* Asegura que el pie de página se quede abajo */
     }
-
     /* Sección Hero (principal) */
     .hero {
       background-image: url('https://source.unsplash.com/1600x900/?tropical,beach'); /* Imagen tropical */
@@ -40,7 +37,6 @@
       text-align: center;
       padding: 0 20px;
     }
-
     .hero h1 {
       font-size: 60px;
       font-family: 'Playfair Display', serif;
@@ -49,7 +45,6 @@
       text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
       margin: 0;
     }
-
     .hero p {
       font-size: 20px;
       font-weight: 400;
@@ -59,7 +54,6 @@
       margin-left: auto;
       margin-right: auto;
     }
-
     /* Botón para explorar */
     .explore-btn {
       background-color: #FF7043; /* Naranja exótico */
@@ -72,11 +66,9 @@
       margin-top: 30px;
       transition: background-color 0.3s ease;
     }
-
     .explore-btn:hover {
       background-color: #FF5722; /* Efecto hover */
     }
-
     /* Footer */
     footer {
       background-color: #FF7043;
@@ -86,11 +78,9 @@
       font-size: 16px;
       margin-top: auto; /* Asegura que el pie de página quede pegado al final */
     }
-
     footer p {
       margin: 0;
     }
-
     /* Estilos para Misión y Visión */
     .mission-vision {
       display: flex;
@@ -100,7 +90,6 @@
       gap: 20px; /* Espacio entre las dos secciones */
       padding: 0 20px;
     }
-
     .mission, .vision {
       background-color: #fff;
       padding: 20px;
@@ -110,39 +99,32 @@
       min-width: 300px; /* Asegura que las secciones tengan un ancho mínimo */
       box-sizing: border-box;
     }
-
     .mission h2, .vision h2 {
       font-size: 1.5em;
       color: #333;
       margin-bottom: 10px;
     }
-
     .mission p, .vision p {
       font-size: 1.1em;
       color: #555;
     }
-
     .mission {
       background-color: #f9f3ec; /* Fondo de color crema para la misión */
       border-left: 6px solid #b38a7a; /* Borde izquierdo con color acorde */
     }
-
     .vision {
       background-color: #e1f2f4; /* Fondo de color azul claro para la visión */
       border-left: 6px solid #00796b; /* Borde izquierdo con un tono verde */
     }
-
     /* Estilos para el texto introductorio */
     .about-us-intro {
       text-align: center; /* Centra el texto */
       padding: 40px 20px;
     }
-
     .about-us-intro h1 {
       font-size: 2.5em;
       margin-bottom: 20px;
     }
-
     .about-us-intro p {
       font-size: 1.2em;
       max-width: 800px;
@@ -150,7 +132,6 @@
       margin-right: auto;
       color: #555;
     }
-
     /* Responsividad */
     @media (max-width: 768px) {
       .mission-vision {
@@ -158,7 +139,6 @@
         gap: 30px; /* Más espacio en pantallas pequeñas */
         align-items: center;
       }
-
       .mission, .vision {
         width: 80%; /* Más ancho en pantallas pequeñas */
       }
@@ -166,7 +146,6 @@
   </style>
 </head>
 <body>
-
 <div class="about-us-container">
     <section class="about-us-intro">
         <div class="container">

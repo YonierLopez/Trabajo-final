@@ -16,7 +16,7 @@
       font-family: "Raleway", sans-serif;
       font-size: 14px;
       font-weight: 500;
-      background-color: #95604e;
+      background-color: #274c77; /* Color azul */
       -webkit-font-smoothing: antialiased;
       display: flex;
       flex-direction: column;
@@ -24,11 +24,12 @@
     }
 
     .colorr {
-      background-color: #95604e;
+      background-color: #0096C7; /* Color azul */
+      flex-grow: 1; /* Para que el contenedor crezca y ocupe toda la altura disponible */
     }
 
     .header {
-      background: linear-gradient(135deg, #8d6e63, #a1887f);
+      background: linear-gradient(135deg, #0077b6, #0077b6); /* Gradiente azul */
       color: white;
       padding: 40px 0;
       text-align: center;
@@ -58,20 +59,16 @@
       text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
     }
 
-    .title {
-      font-family: "Raleway";
-      font-size: 24px;
-      font-weight: 700;
-      color: #5D4037;
-      text-align: center;
-    }
-
     .container {
-      padding: 40px 80px;
+      padding: 40px 20px;
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: center; /* Centra todo el contenido */
+      gap: 0; /* Elimina el espacio entre las tarjetas */
+      align-items: center;
       flex-grow: 1;
+      max-width: 1200px; /* Limita el ancho máximo del contenedor */
+      margin: 0 auto; /* Centra el contenedor */
     }
 
     /* Estilo de la tarjeta */
@@ -80,6 +77,7 @@
       perspective: 800px;
       cursor: pointer;
       transition: transform 0.3s ease;
+      width: 240px; /* Ancho fijo para las tarjetas */
     }
 
     .card-wrap:hover {
@@ -88,19 +86,17 @@
 
     .card {
       position: relative;
-      flex: 0 0 240px;
-      width: 240px;
+      width: 100%;
       height: 320px;
       background-color: #fff;
       overflow: hidden;
       border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Sombra más fuerte */
       transition: 0.3s ease;
+      border: 4px solid #1a3d66; /* Marco azul alrededor de la tarjeta */
     }
 
-    /* Fondo de la tarjeta */
     .card-bg {
-      opacity: 0.5;
       position: absolute;
       top: 0;
       left: 0;
@@ -110,22 +106,25 @@
       background-position: center;
       background-size: cover;
       pointer-events: none;
-      transition: opacity 0.3s ease;
+      border-radius: 10px; /* Borde de la imagen */
     }
 
-    /* Información sobre la tarjeta */
     .card-info {
-      padding: 20px;
+      padding: 15px;
       position: absolute;
       bottom: 0;
+      width: 100%;
+      background-color: #1a3d66; /* Fondo azul oscuro del cuadro de información */
       color: #fff;
+      border-top: 4px solid #274c77; /* Borde superior azul */
       transform: translateY(40%);
       transition: 0.3s ease;
+      border-radius: 0 0 10px 10px; /* Bordes redondeados en la parte inferior */
     }
 
     .card-info h1 {
       font-family: "Playfair Display";
-      font-size: 24px;
+      font-size: 20px;
       font-weight: 700;
       text-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
     }
@@ -141,29 +140,22 @@
     }
 
     .card-wrap:hover .card-bg {
-      opacity: 0.7;
+      opacity: 1; /* Sin cambio de opacidad */
     }
 
     .card-wrap:hover .card-info {
       transform: translateY(0);
     }
 
-    .card-info:after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
-      opacity: 0;
-      transform: translateY(100%);
-      transition: opacity 0.3s ease, transform 0.3s ease;
+    /* Efecto de borde de la tarjeta */
+    .card-wrap:hover .card {
+      border: 4px solid #1a3d66; /* Cambio de borde al pasar el ratón */
     }
 
-    .card-wrap:hover .card-info:after {
-      opacity: 1;
-      transform: translateY(0);
+    /* Efecto de movimiento de la imagen */
+    .card-wrap:hover .card-bg {
+      transform: scale(1.1);
+      transition: transform 0.3s ease;
     }
 
     /* Footer */
@@ -172,7 +164,7 @@
       color: white;
       text-align: center;
       padding: 10px 0;
-      margin-top: 0; /* Agregado para mover el pie de página un poco más abajo */
+      margin-top: 0;
     }
 
     .footer-copy {
@@ -229,14 +221,8 @@
       </div>
     </div>
   </div>
-
-  <!-- Footer -->
-  <footer>
-    <div class="footer-copy">
-      <p>&copy; 2024 Tu Empresa. Todos los derechos reservados.</p>
-    </div>
-  </footer>
   </div>
+
 </body>
 </html>
 
