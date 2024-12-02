@@ -16,25 +16,25 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f5f5f5; /* Fondo suave */
-            margin: 0; /* Asegura que no haya márgenes */
-            padding: 0; /* Asegura que no haya relleno */
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
         }
 
-        .navbar {
+        .barra-navegacion {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background-color: #274c77; /* Color azul sólido */
+            background-color: #274c77;
             padding: 10px 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             border-radius: 10px;
             position: relative;
-            animation: slideIn 0.5s ease-out; /* Animación de entrada */
-            margin: 0; /* Asegura que no haya margen extra */
+            animation: deslizamiento 0.5s ease-out;
+            margin: 0;
         }
 
-        @keyframes slideIn {
+        @keyframes deslizamiento {
             from {
                 transform: translateY(-20px);
                 opacity: 0;
@@ -48,12 +48,12 @@
         .logo img {
             height: 80px;
             width: 80px;
-            border-radius: 50%; /* Logo redondo */
+            border-radius: 50%;
             object-fit: cover;
-            border: 4px solid #ffffff; /* Borde blanco alrededor del logo */
+            border: 4px solid #ffffff;
         }
 
-        .title {
+        .titulo {
             display: flex;
             align-items: center;
             color: white;
@@ -62,19 +62,19 @@
             font-weight: 700;
         }
 
-        .title span {
+        .titulo span {
             font-size: 2em;
-            color: #ADE8F4; /* Color dorado para el título */
+            color: #ADE8F4;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        .title small {
+        .titulo small {
             display: block;
             font-size: 0.9em;
-            color: #f39c12; /* Color más claro */
+            color: #f39c12;
         }
 
-        .nav-links {
+        .enlaces-nav {
             display: flex;
             gap: 20px;
             list-style: none;
@@ -83,60 +83,59 @@
             flex-grow: 1;
         }
 
-        .nav-links li a {
+        .enlaces-nav li a {
             color: #fff;
             text-decoration: none;
             font-weight: 600;
-            background-color: #274c77; /* Fondo de botón */
+            background-color: #274c77;
             padding: 10px 15px;
             border-radius: 25px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Efecto de transición */
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
         }
 
-        .nav-links li a:hover {
-            background-color: #274c77; /* Cambio de color al pasar el cursor */
-            transform: translateY(-3px); /* Efecto de elevación */
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4); /* Efecto de sombra al pasar el cursor */
+        .enlaces-nav li a:hover {
+            background-color: #274c77;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
         }
 
-        .icons {
+        .iconos {
             display: flex;
             align-items: center;
             gap: 15px;
             margin-left: auto;
         }
 
-        .profile-icon, .language, .hamburger-icon {
+        .icono-perfil, .idioma, .icono-hamburguesa {
             font-size: 1.5em;
-            color: #f1c40f; /* Color dorado */
+            color: #f1c40f;
             cursor: pointer;
-            transition: transform 0.3s, color 0.3s; /* Efecto de transición */
+            transition: transform 0.3s, color 0.3s;
         }
 
-        .profile-icon:hover, .language:hover, .hamburger-icon:hover {
-            transform: rotate(15deg); /* Efecto de rotación al pasar el cursor */
-            color: #f39c12; /* Cambio de color de los íconos */
+        .icono-perfil:hover, .idioma:hover, .icono-hamburguesa:hover {
+            transform: rotate(15deg);
+            color: #f39c12;
         }
 
-        /* Estilos para el checkbox y el ícono de hamburguesa */
         #menu-toggle {
             display: none;
         }
 
-        .hamburger-icon {
+        .icono-hamburguesa {
             display: none;
             font-size: 2em;
         }
 
-        /* Responsivo */
+        /* Estilo cuando el menú es responsive */
         @media (max-width: 768px) {
-            .nav-links {
+            .enlaces-nav {
                 display: none;
                 position: absolute;
                 top: 70px;
                 right: 20px;
-                background: rgba(40, 76, 119, 0.9); /* Fondo semitransparente */
+                background: rgba(40, 76, 119, 0.9);
                 flex-direction: column;
                 gap: 10px;
                 padding: 10px;
@@ -144,37 +143,50 @@
                 z-index: 10;
             }
 
-            .hamburger-icon {
-                display: block;
+            .iconos {
+                display: none; /* Se ocultan los íconos de perfil, idioma y cerrar sesión */
             }
 
-            #menu-toggle:checked + .hamburger-icon + .nav-links {
+            .icono-hamburguesa {
+                display: block; /* Se muestra el ícono hamburguesa */
+            }
+
+            #menu-toggle:checked + .icono-hamburguesa + .enlaces-nav {
+                display: flex; /* El menú se despliega */
+            }
+
+            /* Cuando el menú está abierto, los íconos se muestran debajo de los enlaces del menú */
+            #menu-toggle:checked + .icono-hamburguesa + .enlaces-nav + .iconos {
                 display: flex;
+                flex-direction: column; /* Los íconos se apilan debajo */
+                gap: 10px;
+                margin-top: 10px; /* Separación entre el menú y los íconos */
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <nav class="navbar">
-            <div class="title">
+        <nav class="barra-navegacion">
+            <div class="titulo">
                 <span>Vacaciones_Top</span>
             </div>
 
             <input type="checkbox" id="menu-toggle">
-            <label for="menu-toggle" class="hamburger-icon">☰</label>
+            <label for="menu-toggle" class="icono-hamburguesa">☰</label>
 
-            <ul class="nav-links">
+            <ul class="enlaces-nav">
                 <li><a href="{{ route('inicio') }}">INICIO</a></li>
                 <li><a href="{{ route('sobreNosotros') }}">SOBRE NOSOTROS</a></li>
                 <li><a href="{{ route('planesTuristicos') }}">PLANES TURISTICOS</a></li>
                 <li><a href="{{ route('contacto') }}">CONTACTO</a></li>
             </ul>
 
-            <div class="icons">
-                <span class="profile-icon" onclick="window.location.href='{{ route('register') }}'">👤</span>
-                <span class="language" onclick="cambiarIdioma()">ES ▼</span>
+            <div class="iconos">
+                <span class="icono-perfil" onclick="window.location.href='{{ route('register') }}'">👤</span>
+                <span class="idioma" onclick="cambiarIdioma()">ES ▼</span>
                 <form method="POST" action="{{ route('logout') }}">
+                @csrf
                     <button type="submit" class="text-white flex items-center space-x-2">
                         <i class="fas fa-sign-out-alt"></i>
                     </button>
@@ -185,11 +197,11 @@
 
     <script>
         function cambiarIdioma() {
-            let currentLanguage = document.querySelector('.language').textContent.trim();
+            let currentLanguage = document.querySelector('.idioma').textContent.trim();
             if (currentLanguage === "ES ▼") {
-                document.querySelector('.language').textContent = "EN ▼";
+                document.querySelector('.idioma').textContent = "EN ▼";
             } else {
-                document.querySelector('.language').textContent = "ES ▼";
+                document.querySelector('.idioma').textContent = "ES ▼";
             }
         }
     </script>

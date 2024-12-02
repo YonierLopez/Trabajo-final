@@ -2,175 +2,252 @@
 
 @section('content')
 
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Slider Mejorado</title>
-
-  <style>
-    .colorr {
-      background-image: url('{{ asset('images/fondoc.jpg') }}'); 
-      background-size: cover; /* Hace que la imagen cubra toda la pantalla */
-      background-position: center; /* Centra la imagen */
-      background-attachment: fixed; /* Fija la imagen al fondo */
-      padding-top: 40px; /* Para que el espacio entre el slider y el navbar se vea con color */
-      padding-bottom: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-    }
-
-    /* Contenedor del slider y la descripción */
-    .slider-container {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      max-width: 1200px;
-      margin: 40px auto;
-    }
-
-    /* Estilo principal del slider */
-    .slider {
-      width: 70%;
-      max-width: 800px;
-      overflow: hidden;
-      border: 4px double #63bb30;
-      border-radius: 20px;
-      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
-      position: relative;
-    }
-
-    .slider ul {
-      display: flex;
-      padding: 0;
-      margin: 0;
-      transition: transform 1s ease-in-out;
-      width: 400%;
-    }
-
-    .slider li {
-      width: 25%;
-      list-style: none;
-    }
-
-    .slider img {
-      width: 100%;
-      height: 400px;
-      object-fit: cover;
-      border-radius: 15px;
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    }
-
-    .prev, .next {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: #a88275;
-      color: white;
-      border: 2px solid #a88275;
-      width: 50px;
-      height: 50px;
-      font-size: 30px;
-      cursor: pointer;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-    }
-
-    .prev {
-      left: 10px;
-    }
-
-    .next {
-      right: 10px;
-    }
-
-    .prev:hover, .next:hover {
-      background-color: white;
-      color: #a88275;
-      transform: translateY(-50%) scale(1.1);
-    }
-
-    /* Descripción del lado derecho */
-    .description {
-      width: 25%;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.6); /* Fondo con transparencia */
-      color: white;
-      border-radius: 15px;
-      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
-    }
-
-    .description h3 {
-      font-size: 1.5em;
-      margin-bottom: 20px;
-    }
-
-    .description p {
-      font-size: 1em;
-      line-height: 1.6;
-    }
-
-  </style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colombia - País de la Belleza</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
+
+<style>
+    body {
+        font-family: 'Poppins', Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        background-color: #f5f5f5;
+    }
+
+    .banner-principal {
+        position: relative;
+        width: 100%;
+        height: 60vh;
+        overflow: hidden;
+    }
+
+    .imagen-banner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+
+    .imagen-banner.activa {
+        opacity: 1;
+    }
+
+    .texto-banner {
+        position: absolute;
+        top: 15%;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(0, 0, 0, 0.6);
+        color: white;
+        padding: 15px 20px;
+        border-radius: 10px;
+        text-align: center;
+        font-size: 1.8rem;
+        font-weight: 600;
+        max-width: 80%;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+    }
+
+    .texto-banner.activa {
+        opacity: 1;
+    }
+
+    .indicadores {
+        position: absolute;
+        bottom: 5%;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+    }
+
+    .indicador {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: gray;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .indicador.activo {
+        background-color: blue;
+    }
+
+    .carousel-textos {
+        position: relative;
+        max-width: 80%;
+        margin: 0 auto;
+        overflow: hidden;
+        text-align: center;
+        padding: 50px 20px;
+    }
+
+    .carousel-textos .diapositiva {
+        display: none;
+        animation: fadeIn 1s ease;
+    }
+
+    .carousel-textos .diapositiva.activa {
+        display: block;
+    }
+
+    .carousel-textos h2 {
+        font-size: 2rem;
+        color: #023047;
+        margin-bottom: 20px;
+        position: relative;
+    }
+
+    .carousel-textos h2::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50%;
+        height: 3px;
+        background-color: #00aaff;
+    }
+
+    .carousel-textos p {
+        font-size: 1.2rem;
+        color: #555;
+        line-height: 1.6;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+    .carousel-textos {
+        background-color: #a3d1d6;
+        max-width: 100%;
+    }
+
+    .botones-carousel-textos {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .indicador-carousel-textos {
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        background-color: gray;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .indicador-carousel-textos.activo {
+        background-color: blue;
+    }
+</style>
+
 <body>
+    <header class="banner-principal">
+        <img class="imagen-banner activa" src="{{ asset('images/fondoc2.jpg') }}" alt="Imagen 1">
+        <img class="imagen-banner" src="{{ asset('images/amazonas.jpg') }}" alt="Imagen 2">
+        <img class="imagen-banner" src="{{ asset('images/bogota.jpg') }}" alt="Imagen 3">
+        <img class="imagen-banner" src="{{ asset('images/cartagena.jpg') }}" alt="Imagen 4">
 
-<div class="colorr">
+        <div class="texto-banner activa">Colombia, donde miles de especies regresan cada año.</div>
+        <div class="texto-banner">Amazonas: el pulmón verde y corazón de biodiversidad.</div>
+        <div class="texto-banner">Bogotá: el corazón cultural y político del país.</div>
+        <div class="texto-banner">Cartagena: historia, mar y cultura en un solo lugar.</div>
 
-  <div class="slider-container">
-    <div class="slider">
-      <ul>
-        <li><img src="https://cloudfront-us-east-1.images.arcpublishing.com/elespectador/SL3RJGIFWRCQDGAMA2XYX4QYRQ.jpg" alt="Imagen 1"></li>
-        <li><img src="https://colombiaprivatetours.com/wp-content/uploads/2019/04/turismo-en-antioquia-colombia-tours-guia-bilingue-privado.jpg" alt="Imagen 2"></li>
-        <li><img src="https://elextra.co/wp-content/uploads/2024/05/turismo.jpg" alt="Imagen 3"></li>
-        <li><img src="https://pluralidadz.com/wp-content/uploads/2021/09/Turismo-Colombia.jpg" alt="Imagen 4"></li>
-      </ul>
-      <button class="prev">&#10094;</button>
-      <button class="next">&#10095;</button>
-    </div>
+        <div class="indicadores">
+            <div class="indicador activa" onclick="mostrarImagen(0)"></div>
+            <div class="indicador" onclick="mostrarImagen(1)"></div>
+            <div class="indicador" onclick="mostrarImagen(2)"></div>
+            <div class="indicador" onclick="mostrarImagen(3)"></div>
+        </div>
+    </header>
 
-    <!-- Descripción de los paisajes colombianos -->
-    <div class="description">
-      <h3>Paisajes Colombianos</h3>
-      <p>Colombia es un país lleno de contrastes y diversidad. Desde las playas del Caribe hasta las altas montañas de los Andes, pasando por la selva amazónica y los llanos de la Orinoquía, los paisajes colombianos ofrecen una gran variedad de escenarios naturales. En el Caribe, puedes disfrutar de playas paradisíacas; mientras que en el interior del país, las montañas y valles brindan una vista impresionante. Además, la biodiversidad de Colombia es reconocida mundialmente, siendo un destino perfecto para los amantes del ecoturismo.</p>
-    </div>
-  </div>
+    <section class="carousel-textos">
+        <div class="diapositiva activa">
+            <h2>¿Por qué viajar a Colombia?</h2>
+            <p>Colombia es un país que se destaca por su diversidad natural y cultural. Desde las playas del Caribe hasta las montañas de los Andes, ofrece una experiencia única para cada tipo de viajero. Aquí encontrarás la calidez de su gente, una rica historia, y la oportunidad de explorar paisajes que parecen salidos de un sueño.</p>
+            <h2>La cultura colombiana</h2>
+            <p>La cultura colombiana es un mosaico de tradiciones, sabores y ritmos. Desde la cumbia en la costa hasta la salsa en el Valle del Cauca, cada región vibra al ritmo de su propia música. Los festivales como el Carnaval de Barranquilla son eventos que te conectan con el alma del país.</p>
+        </div>
 
-  <script>
-    const prevButton = document.querySelector('.prev');
-    const nextButton = document.querySelector('.next');
-    const slider = document.querySelector('.slider ul');
-    
-    let currentIndex = 0;
-    const totalImages = slider.children.length;
+        <div class="diapositiva">
+            <h2>Destinos únicos</h2>
+            <p>Desde la vibrante Bogotá, pasando por la histórica Cartagena, hasta el verde Amazonas, Colombia tiene un sinfín de destinos únicos que te cautivarán. Cada rincón tiene una historia que contar y una belleza natural que te dejará sin aliento.</p>
+            <h2>Gastronomía deliciosa</h2>
+            <p>La comida colombiana es una fiesta para los sentidos. Platos como la bandeja paisa, el arequipe o las empanadas, te ofrecen un viaje de sabores que reflejan la diversidad de la región. Además, no te puedes perder un buen café colombiano, considerado uno de los mejores del mundo.</p>
+        </div>
 
-    function showPrev() {
-      currentIndex = (currentIndex === 0) ? totalImages - 1 : currentIndex - 1;
-      slider.style.transform = `translateX(-${currentIndex * 25}%)`;
-    }
+        <div class="diapositiva">
+            <h2>Gente cálida y acogedora</h2>
+            <p>Los colombianos son conocidos por su amabilidad, calidez y hospitalidad. No importa en qué región estés, siempre serás recibido con una sonrisa y un gesto amable. La gente aquí es una de las razones principales por las que viajar a Colombia es una experiencia inolvidable.</p>
+            <h2>Aventura y ecoturismo</h2>
+            <p>Si eres un amante de la aventura y el ecoturismo, Colombia es el destino ideal. Puedes hacer senderismo por los Andes, explorar la selva amazónica o disfrutar de actividades acuáticas en el Caribe. La biodiversidad de Colombia ofrece experiencias únicas para los turistas más aventureros.</p>
+        </div>
 
-    function showNext() {
-      currentIndex = (currentIndex === totalImages - 1) ? 0 : currentIndex + 1;
-      slider.style.transform = `translateX(-${currentIndex * 25}%)`;
-    }
+        <div class="diapositiva">
+            <h2>¿Por qué viajar con nosotros?</h2>
+            <p>Viajar con nosotros significa elegir una experiencia única y personalizada. Nos especializamos en ofrecerte un servicio excepcional, adaptado a tus gustos y necesidades, para que disfrutes de cada momento al máximo. Cada destino ha sido cuidadosamente seleccionado para brindarte lo mejor de la cultura, la naturaleza y la aventura que Colombia tiene para ofrecer. Nos enorgullece garantizarte un viaje cómodo, seguro y lleno de momentos inolvidables. Nuestro equipo de expertos está siempre disponible para asistirte, brindarte recomendaciones y asegurarse de que tu experiencia sea sin estrés. Además, contamos con opciones flexibles de reservas y pagos, para que puedas planificar tu viaje con total confianza. Viaja con nosotros y descubre el verdadero espíritu de Colombia, rodeado de paisajes impresionantes, cultura vibrante y la calidez de nuestra gente. ¡Te esperamos para hacer de tu viaje una aventura memorable!</p>
+        </div>
 
-    prevButton.addEventListener('click', showPrev);
-    nextButton.addEventListener('click', showNext);
-  </script>
-</div>
+        <div class="botones-carousel-textos">
+            <div class="indicador-carousel-textos activa" onclick="mostrarDiapositivaTexto(0)"></div>
+            <div class="indicador-carousel-textos" onclick="mostrarDiapositivaTexto(1)"></div>
+            <div class="indicador-carousel-textos" onclick="mostrarDiapositivaTexto(2)"></div>
+            <div class="indicador-carousel-textos" onclick="mostrarDiapositivaTexto(3)"></div>
+        </div>
+    </section>
 
+    <script>
+        let indiceImagen = 0;
+        let indiceTexto = 0;
+        const imagenes = document.querySelectorAll('.imagen-banner');
+        const textos = document.querySelectorAll('.diapositiva');
+        const indicadores = document.querySelectorAll('.indicador');
+        const indicadoresTexto = document.querySelectorAll('.indicador-carousel-textos');
+
+        function mostrarImagen(indice) {
+            imagenes[indiceImagen].classList.remove('activa');
+            indicadores[indiceImagen].classList.remove('activo');
+            imagenes[indice].classList.add('activa');
+            indicadores[indice].classList.add('activo');
+            indiceImagen = indice;
+        }
+
+        function mostrarDiapositivaTexto(indice) {
+            textos[indiceTexto].classList.remove('activa');
+            indicadoresTexto[indiceTexto].classList.remove('activo');
+            textos[indice].classList.add('activa');
+            indicadoresTexto[indice].classList.add('activo');
+            indiceTexto = indice;
+        }
+
+        setInterval(() => {
+            const siguiente = (indiceImagen + 1) % imagenes.length;
+            mostrarImagen(siguiente);
+            const siguienteTexto = (indiceTexto + 1) % textos.length;
+            mostrarDiapositivaTexto(siguienteTexto);
+        }, 5000);
+    </script>
 </body>
 </html>
 
