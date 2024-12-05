@@ -16,7 +16,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f5f5f5;
+            background-color: #f2f7fa; /* Fondo más suave para el cuerpo */
             margin: 0;
             padding: 0;
         }
@@ -25,13 +25,17 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            background-color: #274c77;
+            background-color: #65aec7; /* Color azul claro */
             padding: 10px 20px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             border-radius: 10px;
-            position: relative;
+            position: fixed; /* Fija la barra en la parte superior */
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
             animation: deslizamiento 0.5s ease-out;
-            margin: 0;
+            transition: background-color 0.3s, opacity 0.3s; /* Transición para el efecto de scroll */
         }
 
         @keyframes deslizamiento {
@@ -56,7 +60,7 @@
         .titulo {
             display: flex;
             align-items: center;
-            color: white;
+            color: #ecf0f1; /* Color blanco */
             margin-left: 10px;
             font-family: 'Roboto', sans-serif;
             font-weight: 700;
@@ -64,14 +68,14 @@
 
         .titulo span {
             font-size: 2em;
-            color: #ADE8F4;
+            color: #ecf0f1;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .titulo small {
             display: block;
             font-size: 0.9em;
-            color: #f39c12;
+            color: #f39c12; /* Naranja para el subtítulo */
         }
 
         .enlaces-nav {
@@ -87,7 +91,7 @@
             color: #fff;
             text-decoration: none;
             font-weight: 600;
-            background-color: #274c77;
+            background-color: #4b9cbf; /* Azul más oscuro para los enlaces */
             padding: 10px 15px;
             border-radius: 25px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -95,7 +99,7 @@
         }
 
         .enlaces-nav li a:hover {
-            background-color: #274c77;
+            background-color: #274c77; /* Azul más profundo al pasar el ratón */
             transform: translateY(-3px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
         }
@@ -109,14 +113,14 @@
 
         .icono-perfil, .idioma, .icono-hamburguesa {
             font-size: 1.5em;
-            color: #f1c40f;
+            color: #f1c40f; /* Color dorado para los íconos */
             cursor: pointer;
             transition: transform 0.3s, color 0.3s;
         }
 
         .icono-perfil:hover, .idioma:hover, .icono-hamburguesa:hover {
             transform: rotate(15deg);
-            color: #f39c12;
+            color: #f39c12; /* Efecto de hover dorado */
         }
 
         #menu-toggle {
@@ -163,11 +167,17 @@
                 margin-top: 10px; /* Separación entre el menú y los íconos */
             }
         }
+
+        /* Efecto de transparencia cuando se hace scroll */
+        .scrolling {
+            background-color: rgba(101, 174, 199, 0.8); /* Color azul con opacidad */
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 <body>
     <header>
-        <nav class="barra-navegacion">
+        <nav class="barra-navegacion" id="navbar">
             <div class="titulo">
                 <span>Vacaciones_Top</span>
             </div>
@@ -186,7 +196,7 @@
                 <span class="icono-perfil" onclick="window.location.href='{{ route('register') }}'">👤</span>
                 <span class="idioma" onclick="cambiarIdioma()">ES ▼</span>
                 <form method="POST" action="{{ route('logout') }}">
-                @csrf
+                    @csrf
                     <button type="submit" class="text-white flex items-center space-x-2">
                         <i class="fas fa-sign-out-alt"></i>
                     </button>
@@ -196,6 +206,16 @@
     </header>
 
     <script>
+        // Detectar el scroll y aplicar la clase de transparencia
+        window.onscroll = function() {
+            let navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolling'); // Aplica transparencia
+            } else {
+                navbar.classList.remove('scrolling'); // Elimina la transparencia
+            }
+        };
+
         function cambiarIdioma() {
             let currentLanguage = document.querySelector('.idioma').textContent.trim();
             if (currentLanguage === "ES ▼") {

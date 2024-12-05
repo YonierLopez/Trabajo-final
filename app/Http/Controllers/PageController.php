@@ -28,4 +28,14 @@ class PageController extends Controller
     {
         return view('users.contacto'); // vista contacto.blade.php
     }
+
+    public function Ballenas()
+    {
+        return view('users.Ballenas'); // vista contacto.blade.php
+    }
+
+    public function montañas()
+    {
+        return view('users.montañas'); // vista contacto.blade.php
+    }
 }

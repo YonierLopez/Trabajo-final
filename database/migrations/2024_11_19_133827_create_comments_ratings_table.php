@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('comments_ratings', function (Blueprint $table) {
             $table->id();
-            $table->text('comment');              
-            $table->date('date');                
-            $table->integer('rating');  
-            $table->timestamps();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Relación con la tabla de usuarios
+            $table->text('comment');               // Comentario del usuario
+            $table->date('date');                  // Fecha del comentario
+            $table->integer('rating')->default(0); // Valoración del comentario (rango 1-5)
+            $table->timestamps();                 // Para almacenar las fechas de creación y actualización
         });
     }
 

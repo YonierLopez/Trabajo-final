@@ -1,229 +1,281 @@
 @extends('layouts.app')
 
-@section('title', 'Sobre Nosotros')
-
 @section('content')
-<html lang="es">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Planes Turísticos</title>
-  <style>
-    /* Estilos generales */
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: "Raleway", sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      background-color: #274c77; /* Color azul */
-      -webkit-font-smoothing: antialiased;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agencia de Viajes - Paquetes Exóticos</title>
+    <style>
+        body{
+            padding-top: 68px;
+        }
 
-    .colorr {
-      background-color: #0096C7; /* Color azul */
-      flex-grow: 1; /* Para que el contenedor crezca y ocupe toda la altura disponible */
-    }
+        .fondos {
+            background-image: url('{{ asset('images/Paquetes.avif') }}');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            padding: 20px; /* Añadido un pequeño margen alrededor */
+        }
 
-    .header {
-      background: linear-gradient(135deg, #0077b6, #0077b6); /* Gradiente azul */
-      color: white;
-      padding: 40px 0;
-      text-align: center;
-      font-family: "Playfair Display", serif;
-      font-size: 48px;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 5px;
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-      animation: slideIn 2s ease-out;
-    }
+        :root {
+            --card-height: 300px;
+            --card-width: calc(var(--card-height) / 1.5);
+        }
 
-    /* Animación de entrada */
-    @keyframes slideIn {
-      from {
-        transform: translateY(-50px);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
+        * {
+            box-sizing: border-box;
+        }
 
-    .header span {
-      color: #fff;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-    }
+        .hero {
+            text-align: center;
+            padding: 30px 50px;
+            margin-bottom: 40px; /* Deja espacio debajo del hero */
+            opacity: 0; 
+            animation: fadeIn 2s forwards; 
+        }
 
-    .container {
-      padding: 40px 20px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center; /* Centra todo el contenido */
-      gap: 0; /* Elimina el espacio entre las tarjetas */
-      align-items: center;
-      flex-grow: 1;
-      max-width: 1200px; /* Limita el ancho máximo del contenedor */
-      margin: 0 auto; /* Centra el contenedor */
-    }
+        .hero h1 {
+            font-size: 3.5rem;
+            margin: 0;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            font-weight: bold;
+        }
 
-    /* Estilo de la tarjeta */
-    .card-wrap {
-      margin: 10px;
-      perspective: 800px;
-      cursor: pointer;
-      transition: transform 0.3s ease;
-      width: 240px; /* Ancho fijo para las tarjetas */
-    }
+        .hero p {
+            font-size: 1.5rem;
+            margin: 15px 0;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+            font-weight: bold;
+        }
 
-    .card-wrap:hover {
-      transform: scale(1.05);
-    }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    .card {
-      position: relative;
-      width: 100%;
-      height: 320px;
-      background-color: #fff;
-      overflow: hidden;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Sombra más fuerte */
-      transition: 0.3s ease;
-      border: 4px solid #1a3d66; /* Marco azul alrededor de la tarjeta */
-    }
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+            padding: 20px;
+            margin-top: 20px; /* Deja un pequeño espacio entre el hero y las cartas */
+        }
 
-    .card-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
-      pointer-events: none;
-      border-radius: 10px; /* Borde de la imagen */
-    }
+        .card {
+            width: var(--card-width);
+            height: var(--card-height);
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            padding: 0 36px;
+            perspective: 2500px;
+            margin: 0;
+        }
 
-    .card-info {
-      padding: 15px;
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      background-color: #1a3d66; /* Fondo azul oscuro del cuadro de información */
-      color: #fff;
-      border-top: 4px solid #274c77; /* Borde superior azul */
-      transform: translateY(40%);
-      transition: 0.3s ease;
-      border-radius: 0 0 10px 10px; /* Bordes redondeados en la parte inferior */
-    }
+        .wrapper {
+            transition: all 0.5s;
+            position: absolute;
+            width: 100%;
+            z-index: -1;
+        }
 
-    .card-info h1 {
-      font-family: "Playfair Display";
-      font-size: 20px;
-      font-weight: 700;
-      text-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
-    }
+        .card:hover .wrapper {
+            transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
+            box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+        }
 
-    .card-info p {
-      opacity: 0;
-      text-shadow: rgba(0, 0, 0, 0.5) 0 2px 4px;
-      transition: opacity 0.3s ease;
-    }
+        .wrapper::before,
+        .wrapper::after {
+            content: "";
+            opacity: 0;
+            width: 100%;
+            height: 80px;
+            transition: all 0.5s;
+            position: absolute;
+            left: 0;
+        }
+        .wrapper::before {
+            top: 0;
+            height: 100%;
+            background-image: linear-gradient(
+                to top,
+                transparent 46%,
+                rgba(12, 13, 19, 0.5) 68%,
+                rgba(12, 13, 19) 97%
+            );
+        }
+        .wrapper::after {
+            bottom: 0;
+            opacity: 1;
+            background-image: linear-gradient(
+                to bottom,
+                transparent 46%,
+                rgba(12, 13, 19, 0.5) 68%,
+                rgba(12, 13, 19) 97%
+            );
+        }
 
-    .card-wrap:hover .card-info p {
-      opacity: 1;
-    }
+        .card:hover .wrapper::before,
+        .wrapper::after {
+            opacity: 1;
+        }
 
-    .card-wrap:hover .card-bg {
-      opacity: 1; /* Sin cambio de opacidad */
-    }
+        .card:hover .wrapper::after {
+            height: 120px;
+        }
 
-    .card-wrap:hover .card-info {
-      transform: translateY(0);
-    }
+        .cover-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
 
-    /* Efecto de borde de la tarjeta */
-    .card-wrap:hover .card {
-      border: 4px solid #1a3d66; /* Cambio de borde al pasar el ratón */
-    }
+        .title {
+            width: 100%;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+            font-size: 1.5rem;
+            transform: translate3d(0%, -50px, 100px);
+            transition: transform 0.5s;
+            font-weight: bold;
+        }
 
-    /* Efecto de movimiento de la imagen */
-    .card-wrap:hover .card-bg {
-      transform: scale(1.1);
-      transition: transform 0.3s ease;
-    }
+        .card:hover .title {
+            transform: translate3d(0%, 0, 0);
+        }
 
-    /* Footer */
-    footer {
-      background-color: #333;
-      color: white;
-      text-align: center;
-      padding: 10px 0;
-      margin-top: 0;
-    }
+        .character {
+            width: 100%;
+            opacity: 0;
+            transition: all 0.5s;
+            position: absolute;
+            z-index: -1;
+        }
 
-    .footer-copy {
-      font-size: 0.9em;
-      color: #ddd;
-    }
-  </style>
+        .card:hover .character {
+            opacity: 1;
+            transform: translate3d(0%, -30%, 100px);
+        }
+
+        .comments-btn a {
+            display: block;
+            margin: 30px auto 0;
+            padding: 15px 30px;
+            background-color: #ff6600; /* Naranja llamativo */
+            color: #ffffff; /* Texto blanco */
+            text-align: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 5px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .comments-btn:hover {
+            background-color: #ff4500; /* Rojo más oscuro para el hover */
+            transform: translateY(-3px);
+        }
+
+    </style>
 </head>
-
 <body>
-  <div class="colorr">
-  <!-- Header -->
-  <div class="header">
-    <span>Explora la belleza de la naturaleza</span>
-  </div>
+  <div class="fondos">
 
-  <!-- Contenedor de las tarjetas -->
-  <div class="container">
-    <!-- Tarjetas de contenido -->
-    <div class="card-wrap">
-      <div class="card">
-        <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1479660656269-197ebb83b540?dpr=2&auto=compress,format&fit=crop&w=1199&h=798&q=80&cs=tinysrgb&crop=');"></div>
-        <div class="card-info">
-          <h1>Cañones</h1>
-          <p>Explora los majestuosos cañones esculpidos por siglos de fuerzas naturales.</p>
-        </div>
-      </div>
+    <div class="hero">
+        <h1>Comienza tu viaje con nosotros</h1>
+        <p>Explora lugares increíbles y vive experiencias inolvidables.</p>
     </div>
-    <div class="card-wrap">
-      <div class="card">
-        <div class="card-bg" style="background-image: url('https://images.pexels.com/photos/22487909/pexels-photo-22487909/free-photo-of-deniz.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');"></div>
-        <div class="card-info">
-          <h1>Playas</h1>
-          <p>Deja que el sonido de las olas te relaje mientras caminas por las arenas doradas.</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-wrap">
-      <div class="card">
-        <div class="card-bg" style="background-image: url('https://images.pexels.com/photos/1671325/pexels-photo-1671325.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');"></div>
-        <div class="card-info">
-          <h1>Bosques</h1>
-          <p>Adéntrate en los frondosos bosques, llenos de vida y misterio.</p>
-        </div>
-      </div>
-    </div>
-    <div class="card-wrap">
-      <div class="card">
-        <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1479621051492-5a6f9bd9e51a?dpr=2&auto=compress,format&fit=crop&w=1199&h=811&q=80&cs=tinysrgb&crop=');"></div>
-        <div class="card-info">
-          <h1>Lagos</h1>
-          <p>Reflexiona sobre las aguas tranquilas de los lagos prístinos.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  </div>
 
+    <div class="cards-container">
+        <!-- Card for Cartagena -->
+        <a href="https://colombia.travel/es/cartagena" target="_blank">
+            <div class="card">
+                <div class="wrapper">
+                    <img src="https://images.pexels.com/photos/12470921/pexels-photo-12470921.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="cover-image" />
+                </div>
+                <div class="title">Cartagena</div>
+                <img src="https://images.unsplash.com/photo-1693969429268-a365dc5c86a1?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="character" />
+            </div>
+        </a>
+
+        <!-- Card for Bogotá -->
+        <a href="https://colombia.travel/es/bogota" target="_blank">
+            <div class="card">
+                <div class="wrapper">
+                    <img src="https://plus.unsplash.com/premium_photo-1697730030651-3a7aa391b9d6?q=80&w=1888&auto=format&fit=crop&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="cover-image" />
+                </div>
+                <div class="title">Bogotá</div>
+                <img src="https://images.pexels.com/photos/10123094/pexels-photo-10123094.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="character" />
+            </div>
+        </a>
+
+        <!-- Card for Medellín -->
+        <a href="https://colombia.travel/es/medellin" target="_blank">
+            <div class="card">
+                <div class="wrapper">
+                    <img src="https://images.unsplash.com/photo-1551282643-392c82ebb909?q=80&w=1887&auto=format&fit=crop&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="cover-image" />
+                </div>
+                <div class="title">Medellín</div>
+                <img src="https://images.pexels.com/photos/14599331/pexels-photo-14599331.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="character" />
+            </div>
+        </a>
+
+        <!-- Card for Cali -->
+        <a href="https://colombia.travel/es/cali" target="_blank">
+            <div class="card">
+                <div class="wrapper">
+                    <img src="https://images.pexels.com/photos/27661603/pexels-photo-27661603/free-photo-of-paisaje-naturaleza-punto-de-referencia-agua.jpeg?auto=compress&cs=tinysrgb&w=600" class="cover-image" />
+                </div>
+                <div class="title">Cali</div>
+                <img src="https://images.pexels.com/photos/13708781/pexels-photo-13708781.png?auto=compress&cs=tinysrgb&w=600" class="character" />
+            </div>
+        </a>
+
+        <!-- Card for Santa Marta -->
+        <a href="https://colombia.travel/es/santa-marta" target="_blank">
+            <div class="card">
+                <div class="wrapper">
+                    <img src="https://images.pexels.com/photos/2106245/pexels-photo-2106245.jpeg?auto=compress&cs=tinysrgb&w=600" class="cover-image" />
+                </div>
+                <div class="title">Santa Marta</div>
+                <img src="https://images.pexels.com/photos/27375961/pexels-photo-27375961/free-photo-of-mar-vuelo-paisaje-playa.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="character" />
+            </div>
+        </a>
+
+        <!-- Card for Popayán -->
+        <a href="https://colombia.travel/es/popayan" target="_blank">
+            <div class="card">
+                <div class="wrapper">
+                    <img src="https://images.unsplash.com/photo-1581269875754-aea2a9b3970a?q=80&w=1887&auto=format&fit=crop&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="cover-image" />
+                </div>
+                <div class="title">Popayán</div>
+                <img src="https://images.unsplash.com/photo-1522086605197-deac1ce7566c?q=80&w=1915&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="character" />
+            </div>
+        </a>
+    </div>
+
+    <!-- Botón de comentarios debajo de las cartas -->
+    <div class="comments-btn">
+        <a href="{{ route('comentarios.index') }}">Deja tu comentario</a>
+    </div>
+  </div>
 </body>
 </html>
-
 @endsection

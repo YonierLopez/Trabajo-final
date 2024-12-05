@@ -13,18 +13,27 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: Arial, sans-serif;
-            min-height: 100vh; /* Asegura que el body ocupe todo el alto de la pantalla */
+        html, body {
+            height: 100%; /* Asegura que ocupen todo el alto de la pantalla */
             display: flex;
             flex-direction: column;
         }
 
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        main {
+            flex-grow: 1; /* Esto permite que el contenido ocupe todo el espacio disponible */
+        }
+
         footer {
-            background-color: #274c77; /* Azul oscuro consistente */
-            color: white;
+            background-color: #65aec7; /* Azul claro consistente con el navbar */
+            color: #ecf0f1; /* Blanco para los textos */
             padding: 20px 0;
             text-align: center;
+            margin-top: auto; /* Esto hace que el footer se fije en la parte inferior */
+            width: 100%;
         }
 
         .footer-bottom {
@@ -43,19 +52,19 @@
         .footer-section h4 {
             font-size: 1.2em;
             margin-bottom: 15px;
-            color: #80b3ff; /* Azul brillante */
+            color: #ecf0f1; /* Blanco para los títulos */
         }
 
         .footer-section p,
         .footer-section a {
             margin-bottom: 5px;
             font-size: 0.95em;
-            color: #ddd; /* Gris claro */
+            color: #ddd; /* Gris claro para los textos */
             text-decoration: none;
         }
 
         .footer-section a:hover {
-            color: #80b3ff; /* Azul brillante */
+            color: #f39c12; /* Naranja brillante en los enlaces */
             text-decoration: underline;
         }
 
@@ -71,7 +80,7 @@
         .footer-copy {
             font-size: 0.9em;
             color: #ddd;
-            background-color: #000; /* Negro sólido */
+            background-color: #2c3e50; /* Fondo oscuro para el copywriting */
             width: 100%; /* Asegura que ocupe todo el ancho */
             text-align: center;
             padding: 10px 0;
@@ -95,6 +104,7 @@
     </style>
 </head>
 <body>
+
     <footer>
         <div class="footer-bottom">
             <div class="footer-section">
