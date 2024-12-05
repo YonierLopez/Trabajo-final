@@ -3,225 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navbar Interactivo</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-
+    <title>Barra de Navegación</title>
+    <!-- Enlace a Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* Reset básico */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f2f7fa; /* Fondo más suave para el cuerpo */
             margin: 0;
-            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #041814;
         }
 
-        .barra-navegacion {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: #65aec7; /* Color azul claro */
-            padding: 10px 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            position: fixed; /* Fija la barra en la parte superior */
+        .navbar {
+            height: 120px; /* Altura de la barra */
+            position: fixed; /* Fija la barra al hacer scroll */
             top: 0;
             left: 0;
-            width: 100%;
-            z-index: 100;
-            animation: deslizamiento 0.5s ease-out;
-            transition: background-color 0.3s, opacity 0.3s; /* Transición para el efecto de scroll */
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px; /* Espaciado horizontal */
+            background-color: #1A1A1A80; /* Color de fondo predeterminado */
+            color: white;
+            width: 100%; /* Ocupar todo el ancho */
+            box-sizing: border-box;
+            z-index: 1000; /* Asegura que la barra esté por encima de otros elementos */
+            transition: background-color 0.3s ease; /* Transición para el cambio de color */
         }
 
-        @keyframes deslizamiento {
-            from {
-                transform: translateY(-20px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .logo img {
-            height: 80px;
-            width: 80px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 4px solid #ffffff;
-        }
-
-        .titulo {
+        .logo-section {
             display: flex;
             align-items: center;
-            color: #ecf0f1; /* Color blanco */
-            margin-left: 10px;
-            font-family: 'Roboto', sans-serif;
-            font-weight: 700;
         }
 
-        .titulo span {
-            font-size: 2em;
-            color: #ecf0f1;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        .logo {
+            height: 70px; /* Tamaño del logo */
+            width: 70px; /* Tamaño del logo */
+            border-radius: 50%; /* Logo circular */
+            margin-right: 10px;
         }
 
-        .titulo small {
-            display: block;
-            font-size: 0.9em;
-            color: #f39c12; /* Naranja para el subtítulo */
+        /* Línea divisoria entre el logo y el nombre */
+        .divider {
+            width: 1px; /* Línea divisoria vertical */
+            height: 50px; /* Altura de la línea */
+            margin: 0 15px;
+            background-color: white; /* Color de la línea */
         }
 
-        .enlaces-nav {
+        .brand-text {
+            font-weight: bold;
+            font-size: 24px; /* Texto más grande */
+            font-family: 'Arial', sans-serif; /* Fuente redondeada */
+        }
+
+        .highlight {
+            color: #ffd700; /* Color dorado */
+        }
+
+        .nav-links {
             display: flex;
-            gap: 20px;
-            list-style: none;
-            padding-left: 0;
-            justify-content: center;
-            flex-grow: 1;
+            gap: 30px; /* Más espacio entre enlaces */
         }
 
-        .enlaces-nav li a {
-            color: #fff;
+        .nav-links a {
             text-decoration: none;
-            font-weight: 600;
-            background-color: #4b9cbf; /* Azul más oscuro para los enlaces */
-            padding: 10px 15px;
-            border-radius: 25px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            color: white;
+            font-weight: bold;
+            font-size: 18px; /* Texto más grande */
+            position: relative;
+            padding-bottom: 5px;
+            font-family: 'Arial', sans-serif; /* Fuente redondeada */
+            text-shadow: 0 0 5px black, 0 0 10px black; /* Contorno de las letras */
         }
 
-        .enlaces-nav li a:hover {
-            background-color: #274c77; /* Azul más profundo al pasar el ratón */
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            content: "";
+            position: absolute;
+            bottom: -5px; /* Separación del borde */
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: red; /* Línea roja debajo del enlace */
         }
 
         .iconos {
             display: flex;
             align-items: center;
-            gap: 15px;
-            margin-left: auto;
+            gap: 25px; /* Más espacio entre iconos */
         }
 
-        .icono-perfil, .idioma, .icono-hamburguesa {
-            font-size: 1.5em;
-            color: #f1c40f; /* Color dorado para los íconos */
+        .icono-perfil {
+            font-size: 26px; /* Iconos más grandes */
             cursor: pointer;
-            transition: transform 0.3s, color 0.3s;
         }
 
-        .icono-perfil:hover, .idioma:hover, .icono-hamburguesa:hover {
-            transform: rotate(15deg);
-            color: #f39c12; /* Efecto de hover dorado */
+        .idioma {
+            font-size: 18px; /* Texto más grande */
+            cursor: pointer;
         }
 
-        #menu-toggle {
-            display: none;
+        form {
+            margin: 0;
+            display: flex;
+            align-items: center;
         }
 
-        .icono-hamburguesa {
-            display: none;
-            font-size: 2em;
+        form button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 26px; /* Icono más grande */
+            cursor: pointer;
+            display: flex;
+            align-items: center;
         }
 
-        /* Estilo cuando el menú es responsive */
-        @media (max-width: 768px) {
-            .enlaces-nav {
-                display: none;
-                position: absolute;
-                top: 70px;
-                right: 20px;
-                background: rgba(40, 76, 119, 0.9);
-                flex-direction: column;
-                gap: 10px;
-                padding: 10px;
-                border-radius: 10px;
-                z-index: 10;
-            }
-
-            .iconos {
-                display: none; /* Se ocultan los íconos de perfil, idioma y cerrar sesión */
-            }
-
-            .icono-hamburguesa {
-                display: block; /* Se muestra el ícono hamburguesa */
-            }
-
-            #menu-toggle:checked + .icono-hamburguesa + .enlaces-nav {
-                display: flex; /* El menú se despliega */
-            }
-
-            /* Cuando el menú está abierto, los íconos se muestran debajo de los enlaces del menú */
-            #menu-toggle:checked + .icono-hamburguesa + .enlaces-nav + .iconos {
-                display: flex;
-                flex-direction: column; /* Los íconos se apilan debajo */
-                gap: 10px;
-                margin-top: 10px; /* Separación entre el menú y los íconos */
-            }
-        }
-
-        /* Efecto de transparencia cuando se hace scroll */
-        .scrolling {
-            background-color: rgba(101, 174, 199, 0.8); /* Color azul con opacidad */
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        /* Barra de colores inferior */
+        .navbar::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%; /* Ocupar todo el ancho */
+            height: 10px;
+            background: linear-gradient(to right, #ffcf2b, #003af1, #f11200);
         }
     </style>
 </head>
 <body>
-    <header>
-        <nav class="barra-navegacion" id="navbar">
-            <div class="titulo">
-                <span>Vacaciones_Top</span>
-            </div>
-
-            <input type="checkbox" id="menu-toggle">
-            <label for="menu-toggle" class="icono-hamburguesa">☰</label>
-
-            <ul class="enlaces-nav">
-                <li><a href="{{ route('inicio') }}">INICIO</a></li>
-                <li><a href="{{ route('sobreNosotros') }}">SOBRE NOSOTROS</a></li>
-                <li><a href="{{ route('planesTuristicos') }}">PLANES TURISTICOS</a></li>
-                <li><a href="{{ route('contacto') }}">CONTACTO</a></li>
-            </ul>
-
-            <div class="iconos">
-                <span class="icono-perfil" onclick="window.location.href='{{ route('register') }}'">👤</span>
-                <span class="idioma" onclick="cambiarIdioma()">ES ▼</span>
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button type="submit" class="text-white flex items-center space-x-2">
-                        <i class="fas fa-sign-out-alt"></i>
-                    </button>
-                </form>
-            </div>
+    <header class="navbar">
+        <div class="logo-section">
+            <img src="{{ asset('images/logo.png') }}" alt="Logo Vacaciones" class="logo">
+            <div class="divider"></div> <!-- Línea divisoria -->
+            <span class="brand-text">VACACIONES <span class="highlight">_TOP</span></span>
+        </div>
+        <nav class="nav-links">
+        <a href="{{ route('inicio') }}">INICIO</a>
+        <a href="{{ route('sobreNosotros') }}">SOBRE NOSOTROS</a>
+        <a href="{{ route('planesTuristicos') }}">PLANES TURISTICOS</a>
+        <a href="{{ route('contacto') }}">CONTACTO</a>
         </nav>
+        <div class="iconos">
+            <span class="icono-perfil" onclick="window.location.href='{{ route('register') }}'">👤</span>
+            <span class="idioma" onclick="cambiarIdioma()">ES ▼</span>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" title="Cerrar sesión">
+                    <i class="fas fa-sign-out-alt"></i> <!-- Ícono de cerrar sesión -->
+                </button>
+            </form>
+        </div>
     </header>
 
     <script>
-        // Detectar el scroll y aplicar la clase de transparencia
         window.onscroll = function() {
-            let navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolling'); // Aplica transparencia
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 10) {
+                navbar.style.backgroundColor = 'rgba(0, 0, 0, 0.8)'; // Fondo negro transparente al hacer scroll
             } else {
-                navbar.classList.remove('scrolling'); // Elimina la transparencia
+                navbar.style.backgroundColor = '#1A1A1A80'; // Fondo original
             }
         };
 
+        const translations = {};
+
+        async function loadTranslations(lang) {
+            // Cargar archivo de traducción dinámicamente
+            const response = await fetch(`/translations/${lang}.json`);
+            translations[lang] = await response.json();
+
+            // Aplicar traducciones a los elementos del DOM
+            document.querySelector("[data-translate='home']").textContent = translations[lang]["home"];
+            document.querySelector("[data-translate='about']").textContent = translations[lang]["about"];
+            document.querySelector("[data-translate='plans']").textContent = translations[lang]["plans"];
+            document.querySelector("[data-translate='contact']").textContent = translations[lang]["contact"];
+        }
+
         function cambiarIdioma() {
-            let currentLanguage = document.querySelector('.idioma').textContent.trim();
-            if (currentLanguage === "ES ▼") {
-                document.querySelector('.idioma').textContent = "EN ▼";
-            } else {
-                document.querySelector('.idioma').textContent = "ES ▼";
+            const currentLang = document.querySelector('.idioma').textContent.trim().split(' ')[0];
+            const newLang = prompt("Seleccione un idioma: ES (Español), EN (Inglés), FR (Francés), DE (Alemán), IT (Italiano), PT (Portugués)");
+            if (newLang) {
+                loadTranslations(newLang.toLowerCase());
+                document.querySelector('.idioma').textContent = `${newLang.toUpperCase()} ▼`;
             }
         }
     </script>

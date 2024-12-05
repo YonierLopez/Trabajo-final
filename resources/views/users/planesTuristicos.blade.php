@@ -9,7 +9,7 @@
     <title>Agencia de Viajes - Paquetes Exóticos</title>
     <style>
         body{
-            padding-top: 68px;
+            padding-top: 120px;
         }
 
         .fondos {
@@ -275,6 +275,11 @@
     <div class="comments-btn">
         <a href="{{ route('comentarios.index') }}">Deja tu comentario</a>
     </div>
+
+    <div class="comments-btn">
+        <a href="{{ route('playas') }}">Descubre nuestras promociones en playas</a>
+    </div>
+
   </div>
 </body>
 </html>

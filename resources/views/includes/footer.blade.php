@@ -28,7 +28,7 @@
         }
 
         footer {
-            background-color: #65aec7; /* Azul claro consistente con el navbar */
+            background-color: #caf0f8; /* Azul claro consistente con el navbar */
             color: #ecf0f1; /* Blanco para los textos */
             padding: 20px 0;
             text-align: center;
@@ -80,7 +80,7 @@
         .footer-copy {
             font-size: 0.9em;
             color: #ddd;
-            background-color: #2c3e50; /* Fondo oscuro para el copywriting */
+            background-color: #03045e; /* Fondo oscuro para el copywriting */
             width: 100%; /* Asegura que ocupe todo el ancho */
             text-align: center;
             padding: 10px 0;

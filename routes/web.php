@@ -12,6 +12,7 @@ Route::get('/planes-turisticos', [PageController::class, 'planesTuristicos'])->n
 Route::get('/contacto', [PageController::class, 'contacto'])->name('contacto');
 Route::get('/Ballenas', [PageController::class, 'Ballenas'])->name('Ballenas');
 Route::get('/montañas', [PageController::class, 'montañas'])->name('montañas');
+Route::get('/playas', [PageController::class, 'playas'])->name('playas');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -38,4 +38,10 @@ class PageController extends Controller
     {
         return view('users.montañas'); // vista contacto.blade.php
     }
+
+    public function playas()
+    {
+        return view('users.playas'); // vista contacto.blade.php
+    }
+
 }

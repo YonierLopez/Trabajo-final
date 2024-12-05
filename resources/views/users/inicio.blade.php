@@ -3,188 +3,171 @@
 @section('content')
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Colombia - País de la Belleza</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}"> <!-- Enlace al archivo CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Explora Colombia</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            color: white;
+            background: #1e1e2f;
+            overflow-x: hidden;
+        }
+
+        /* Ajuste para el espacio debajo del navbar */
+        .content-wrapper {
+            margin-top: 120px; /* Ajusta según el tamaño del navbar */
+        }
+
+        /* Definir el estilo del header */
+        .header-section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: url('https://images.pexels.com/photos/142497/pexels-photo-142497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center/cover;
+            height: 80vh; /* Ajuste para que el header no ocupe toda la pantalla */
+            position: relative;
+        }
+
+        .header-section .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .header-section .content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-section h1 {
+            font-size: 3.5em;
+            margin: 0;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .header-section p {
+            font-size: 1.5em;
+            margin: 10px 0;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .header-section .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 1em;
+            color: white;
+            text-decoration: none;
+            background-color: #ff6b6b;
+            border-radius: 5px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .header-section .btn:hover {
+            background-color: #ff4a4a;
+            transform: translateY(-3px);
+        }
+
+        .sections {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 40px 20px;
+            background-color: #282a36;
+        }
+
+        .card {
+            background: #44475a;
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .card h3 {
+            margin: 20px 0 10px;
+            font-size: 1.5em;
+        }
+
+        .card p {
+            font-size: 1em;
+            margin: 0 0 10px;
+        }
+
+        .card .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1em;
+            color: white;
+            text-decoration: none;
+            background-color: #ff6b6b;
+            border-radius: 5px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .card .btn:hover {
+            background-color: #ff4a4a;
+            transform: translateY(-3px);
+        }
+    </style>
 </head>
-
-<style>
-    body {
-        font-family: 'Poppins', Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        padding-top: 68px;
-        overflow-x: hidden;
-        background-color: #f5f5f5;
-    }
-
-    .banner-principal {
-        position: relative;
-        width: calc(100% - 80px); /* Resta 20px a cada lado */
-        height: 80vh; /* Esto asegura que la imagen ocupe toda la altura de la ventana */
-        overflow: hidden;
-        background: url('{{ asset("images/fonfopi.jpg") }}') no-repeat center center/cover;
-        background-size: cover;
-        background-position: center;
-        margin: 0 auto; /* Centra el banner horizontalmente */
-    }
-
-    .texto-banner {
-        position: absolute;
-        top: 58%;
-        left: 60%;
-        background: rgba(0, 0, 0, 0.2);
-        color: white;
-        padding: 20px;
-        border-radius: 10px;
-        text-align: center;
-        font-size: 2.5rem;
-        font-weight: 600;
-        max-width: 80%;
-        line-height: 1.2;
-    }
-
-    .texto-banner p {
-        font-size: 1rem;
-        font-weight: 400;
-        margin-top: 10px;
-    }
-
-    .btn-banner {
-        background-color: #e63946;
-        color: white;
-        padding: 15px 30px;
-        border: none;
-        border-radius: 5px;
-        font-size: 1rem;
-        cursor: pointer;
-        margin-top: 20px;
-        display: inline-block;
-        text-decoration: none;
-        transition: background-color 0.3s ease;
-    }
-
-    .btn-banner:hover {
-        background-color: #d62828;
-    }
-
-    .imagen-grid {
-        display: grid;
-        grid-template-columns: 600px 823px;
-        grid-template-rows: 300px 400px; /* Dos columnas de igual tamaño */
-        gap: 20px; /* Espacio entre las imágenes */
-        width: 100%;
-        max-width: 1200px;
-        margin: 20px 37px;
-    }
-
-    .imagen-item {
-        position: relative;
-        overflow: hidden;
-    }
-
-    .imagen-item img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover; /* Asegura que la imagen se estire y cubra el espacio */
-    }
-
-    .texto-imagen {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        color: white;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 20px;
-    }
-
-    .texto-imagen h3 {
-        font-size: 1.5rem;
-        font-weight: 600;
-        margin-bottom: 10px;
-    }
-
-    .texto-imagen p {
-        font-size: 1rem;
-        font-weight: 400;
-        margin-bottom: 20px;
-    }
-
-    .btn-imagen {
-        background-color: #e63946;
-        color: white;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        font-size: 1rem;
-        cursor: pointer;
-        text-decoration: none;
-        transition: background-color 0.3s ease;
-    }
-
-    .btn-imagen:hover {
-        background-color: #d62828;
-    }
-
-    /* Tercera imagen - ocupa dos columnas y se ajusta a 100vh */
-    .imagen-item:last-child {
-        grid-column: span 2; /* Ocupa el ancho completo */
-    }
-</style>
-
 <body>
-    <header class="banner-principal">
-        <div class="texto-banner">
-            CONECTA CON LA NATURALEZA
-            <p>"Descubre el mundo, a tu manera"</p>
-            <a href="{{ route('planesTuristicos') }}" class="btn-banner">Comienza tu viaje ahora</a>
-        </div>
-    </header>
-
-
-    <section class="imagen-grid">
-        <div class="imagen-item">
-            <img src="{{ asset('images/choco.jpg') }}" alt="Prepara el frío">
-            <div class="texto-imagen">
-                <h3>CONOCE AHORA MISMO LOS:</h3>
-                <p>3 lugares en Colombia en los que puedes ver a las ballenas jorobadas</p>
-                <a href="Ballenas" class="btn-imagen">Conoce más aquí</a>
+    <div class="content-wrapper">
+        <section class="header-section">
+            <div class="overlay"></div>
+            <div class="content">
+                <h1>Explora Colombia</h1>
+                <p>Un paraíso por descubrir</p>
+                <a href="#explorar" class="btn">Inicia tu aventura</a>
             </div>
-        </div>
-        <div class="imagen-item">
-            <img src="{{ asset('images/cascada.jpg') }}" alt="Duerme bajo las estrellas">
-            <div class="texto-imagen">
-                <h3>ACAMPA BAJO LAS ESTRELLAS</h3>
-                <p>Descubre las espectaculares montañas Colombianas</p>
-                <a href="montañas" class="btn-imagen">Descubrelo aquí</a>
-            </div>
-        </div>
-        <div class="imagen-item">
-            <img src="{{ asset('images/cartagena3.jpg') }}" alt="Aventura">
-            <div class="texto-imagen">
-                <h3>PLANEA TU PRÓXIMA AVENTURA</h3>
-                <p>Explora nuevos caminos y destinos increíbles</p>
-                <a href="planes-turisticos" class="btn-imagen">Contáctanos</a>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <script>
-        // Si necesitas mantener el cambio de imágenes y los indicadores, puedes agregar el código para ellos aquí.
-    </script>
-
+        <section id="explorar" class="sections">
+            <div class="card">
+                <img src="https://images.pexels.com/photos/2884864/pexels-photo-2884864.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Acampa bajo las estrellas">
+                <h3>Acampa Bajo las Estrellas</h3>
+                <p>Vive noches mágicas bajo cielos despejados en los Andes colombianos.</p>
+                <a href="#" class="btn">Descubre más</a>
+            </div>
+            <div class="card">
+                <img src="https://images.pexels.com/photos/4666753/pexels-photo-4666753.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Ver ballenas jorobadas">
+                <h3>Encuentra Ballenas Jorobadas</h3>
+                <p>Descubre el espectáculo de la naturaleza en el Pacífico colombiano.</p>
+                <a href="#" class="btn">Descubre más</a>
+            </div>
+            <div class="card">
+                <img src="https://images.pexels.com/photos/13833970/pexels-photo-13833970.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Planea tu aventura">
+                <h3>Planea Tu Próxima Aventura</h3>
+                <p>Recorre las playas del Caribe, las selvas del Amazonas y mucho más.</p>
+                <a href="#" class="btn">Descubre más</a>
+            </div>
+        </section>
+    </div>
 </body>
 </html>
 
