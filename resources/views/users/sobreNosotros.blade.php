@@ -44,7 +44,7 @@
 
         .btn {
             padding: 15px 30px;
-            background-color: #0078d4;
+            background-color: #023047;
             color: white;
             text-decoration: none;
             border-radius: 5px;
@@ -57,94 +57,52 @@
             transform: translateY(-5px);
         }
 
-        /* About Us Section */
-        .about-us {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 50px 20px;
-            background-color: #ffffff;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .about-us .image {
-            flex: 1;
-            max-width: 500px;
-            margin: 60px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            position: relative;
-            height: 300px; /* Ajusta la altura de la imagen */
-        }
-
-        .about-us .image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Hace que la imagen se ajuste al tamaño del contenedor */
-            transition: transform 0.5s ease;
-        }
-
-        .about-us .image img:hover {
-            transform: scale(1.05);
-        }
-
-        .about-us .text {
-            flex: 2;
-            margin: 20px;
-            padding: 20px;
-            text-align: left;
-        }
-
-        .about-us h2 {
-            font-size: 2.8rem;
-            color: #333;
-            margin-bottom: 20px;
-            font-family: 'Georgia', serif;
-        }
-
-        .about-us p {
-            font-size: 1.2rem;
-            color: #555;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-
-        .about-us .quote {
-            font-style: italic;
-            margin-top: 30px;
-            color: #0078d4;
-            font-size: 1.3rem;
-        }
-
-        /* Misión y Visión (Misión a la derecha y Visión abajo a la izquierda) */
+        /* Mission and Vision Section */
         .mission-vision {
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: flex-start;
-            padding: 50px 20px;
+            justify-content: space-between;
+            padding: 10px 20px;
             background-color: #f0f0f0;
         }
 
-        /* Misión */
-        .mission-vision .mission {
-            padding: 30px;
-            background-color: #fff;
+        .mission-vision .mission, 
+        .mission-vision .vision {
+            display: flex;
+            width: 100%;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
             border-radius: 10px;
-            margin-bottom: 20px;
-            width: 50%;
-            align-self: flex-end; /* Misión alineada a la derecha */
+            padding: 20px;
+            justify-content: space-between;
+            align-items: stretch;
         }
 
-        /* Visión */
-        .mission-vision .vision {
-            padding: 30px;
-            background-color: #fff;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            width: 50%;
+        .mission-vision .mission .image, 
+        .mission-vision .vision .image {
+            flex: 1;
+            padding-top: 30px;
+            margin-right: 20px;
+            height: 100%;
+            display: flex;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .mission-vision .mission .image img,
+        .mission-vision .vision .image img {
+          width: 100%;
+          height: auto;  /* Mantener la proporción */
+          max-height: 250px; /* Ajusta este valor según tus necesidades */
+          object-fit: cover; /* Asegura que la imagen cubra el área sin distorsionarse */
+        }  
+
+        .mission-vision .mission .text,
+        .mission-vision .vision .text {
+            flex: 1;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
         .mission-vision h2 {
@@ -160,42 +118,67 @@
             line-height: 1.6;
         }
 
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
+        /* Invert the layout for the Vision section */
+        .mission-vision .vision {
+            flex-direction: row-reverse; /* Invert the order of the image and text */
         }
 
-        footer p {
-            margin: 0;
-            font-size: 1rem;
+        /* About Us Section */
+        .about-us {
+            padding: 40px 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+        .about-us .text {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-us h2 {
+            font-size: 2.5rem;
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .about-us p {
+            font-size: 1.2rem;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
         }
 
         /* Responsive Design */
-        @media (max-width: 768px) {
-            .about-us {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .about-us .text {
-                flex: 1;
-                margin-top: 20px;
-            }
-
-            .mission-vision {
-                padding: 20px;
-            }
-
+        @media (max-width: 1024px) {
             .mission-vision .mission,
             .mission-vision .vision {
-                margin-bottom: 20px;
+                flex-direction: column;
+            }
+
+            .mission-vision .mission .image,
+            .mission-vision .mission .text,
+            .mission-vision .vision .image,
+            .mission-vision .vision .text {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .mission-vision .mission .image img,
+            .mission-vision .vision .image img {
+                height: auto;
                 width: 100%;
             }
 
-            .mission-vision .mission {
-                align-self: center; /* Misión centrada en pantallas pequeñas */
+            .mission-vision .mission .text,
+            .mission-vision .vision .text {
+                padding: 10px;
+            }
+
+            .about-us .text {
+                padding: 0 10px;
             }
         }
     </style>
@@ -204,36 +187,49 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <h1>Sobre Nosotros</h1>
+        <h1>VACACIONES_TOP</h1>
         <p>"Descubre el mundo, a tu modo"</p>
-        <a href="#contact" class="btn">Contáctanos</a>
+        <a href="{{ route('planesTuristicos') }}" class="btn">Contáctanos</a>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission-vision">
+        <!-- Misión -->
+        <div class="mission">
+            <div class="image">
+                <img src="images/mision.png" alt="Misión">
+            </div>
+            <div class="text">
+                <h2>Misión</h2>
+                <p>Brindar a los viajeros experiencias seguras y enriquecedoras mediante el acceso en tiempo real a información útil y confiable sobre los lugares que visitan. Nos comprometemos a ofrecer servicios turísticos de calidad, transparentes y accesibles, garantizando la satisfacción y la seguridad de nuestros clientes en cada paso de su viaje.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section class="mission-vision">
+        <!-- Visión -->
+        <div class="vision">
+            <div class="image">
+                <img src="images/vision.jpg" alt="Visión">
+            </div>
+            <div class="text">
+                <h2>Visión</h2>
+                <p>Ser la plataforma de turismo más confiable y segura para los viajeros, destacándonos por nuestra innovación en la oferta de información en tiempo real sobre destinos turísticos. Nos proyectamos como líderes en ofrecer servicios turísticos personalizados, con un enfoque en la seguridad, el bienestar y la satisfacción total de nuestros clientes.</p>
+            </div>
+        </div>
     </section>
 
     <!-- About Us Section -->
     <section class="about-us">
-        <div class="image">
-            <img src= '{{ asset('images/fondocom.png')}}' alt="Vacaciones Top - Hoteles">
-        </div>
         <div class="text">
-            <h2>Quiénes somos</h2>
-            <p>En **Vacaciones_Top**, estamos comprometidos con ofrecer experiencias únicas a nuestros huéspedes. Nuestros destinos exclusivos, servicios personalizados y atención al detalle nos convierten en una opción ideal para aquellos que buscan lujo, comodidad y autenticidad en cada momento. Desde playas paradisíacas hasta el corazón de las ciudades más vibrantes, cada hotel que gestionamos está pensado para que vivas una experiencia a medida.</p>
-            <p>Te invitamos a formar parte de nuestra familia y disfrutar de nuestras instalaciones, que combinan lo mejor del confort moderno con la belleza natural y cultural de cada lugar. En **Vacaciones_Top**, cada estancia es un sueño hecho realidad.</p>
-            <p class="quote">"Tu descanso es nuestra misión. Cada detalle importa, porque tú eres lo más importante para nosotros."</p>
-        </div>
-    </section>
-
-    <!-- Misión y Visión (Misión a la derecha y Visión abajo a la izquierda) -->
-    <section class="mission-vision">
-        <div class="mission">
-            <h2>Misión</h2>
-            <p>En **Vacaciones_Top**, nuestra misión es crear experiencias excepcionales para cada uno de nuestros huéspedes. Buscamos ofrecer un servicio de calidad, atención personalizada y destinos únicos que conviertan cada viaje en una aventura inolvidable. Nos esforzamos por ofrecer la mejor relación calidad-precio y garantizar el bienestar y la satisfacción de quienes confían en nosotros para sus vacaciones.</p>
-        </div>
-        <div class="vision">
-            <h2>Visión</h2>
-            <p>Ser la cadena hotelera más reconocida a nivel global, destacándonos por nuestra excelencia en el servicio y por ofrecer experiencias únicas en cada destino. Nuestra visión es crecer de manera sostenible, innovando constantemente en nuestros servicios y manteniendo siempre un enfoque centrado en el cliente. Queremos ser la primera opción de los viajeros que buscan calidad, confort y experiencias inolvidables en cualquier lugar del mundo.</p>
+            <h2>Nuestra Historia</h2>
+            <p>Nuestro proyecto nació en un espacio de colaboración entre un grupo de compañeros visionarios que compartían una preocupación común: la seguridad y bienestar de los viajeros en destinos desconocidos. Durante varias reuniones, debatimos sobre las crecientes preocupaciones de los turistas respecto a la seguridad en zonas con alto riesgo, tanto por desastres naturales como por inseguridad social. A partir de esa reflexión, surgió la idea de crear un sistema innovador que brindara a los viajeros acceso en tiempo real a información sobre los lugares más peligrosos de la zona en la que se encuentren, permitiéndoles tomar decisiones más informadas y seguras durante su travesía.</p>
+            <p>Además, para mejorar aún más la experiencia del viajero, decidimos incorporar un sistema adicional que permitiría a los turistas conocer los precios aproximados de productos y servicios en su destino, evitando estafas o precios excesivos. Aunque este sistema aún no está disponible debido a limitaciones de tiempo y personal, está planeado para ser implementado en el futuro próximo. Así, trabajamos para ofrecer una experiencia más segura y auténtica a todos los viajeros, brindándoles no solo una excelente oferta turística, sino también la tranquilidad de viajar con confianza.</p>
         </div>
     </section>
 
 </body>
 </html>
+
 @endsection

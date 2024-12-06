@@ -13,6 +13,14 @@ Route::get('/contacto', [PageController::class, 'contacto'])->name('contacto');
 Route::get('/Ballenas', [PageController::class, 'Ballenas'])->name('Ballenas');
 Route::get('/montañas', [PageController::class, 'montañas'])->name('montañas');
 Route::get('/playas', [PageController::class, 'playas'])->name('playas');
+Route::get('/cartagena', [PageController::class, 'cartagena'])->name('cartagena');
+Route::get('/bogota', [PageController::class, 'bogota'])->name('bogota');
+Route::get('/medellin', [PageController::class, 'medellin'])->name('medellin');
+Route::get('/cali', [PageController::class, 'cali'])->name('cali');
+Route::get('/santam', [PageController::class, 'santam'])->name('santam');
+Route::get('/popayan', [PageController::class, 'popayan'])->name('popayan');
+Route::get('/amazonas', [PageController::class, 'amazonas'])->name('amazonas');
+Route::get('/laguajira', [PageController::class, 'laguajira'])->name('laguajira');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

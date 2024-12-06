@@ -11,88 +11,139 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}"> <!-- Enlace al archivo CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            padding-top: 120px;
+            background-color: #f5f5f5;
+        }
+
+        .imagen-ballenas {
+            position: relative;
+            width: 100%;
+            height: 80vh;
+            background: url('{{ asset("images/ballenas.jpg") }}') no-repeat center center/cover;
+        }
+
+        .texto-imagen-principal {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: 600;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .descripcion {
+            text-align: justify;
+            font-size: 1.1rem;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 1200px;
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .descripcion p {
+            margin-bottom: 20px;
+        }
+
+        .titulo-rojo {
+            color: red;
+            font-size: 2.5rem;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .imagen-section {
+            width: 100%;
+            height: auto;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+        .botones {
+            text-align: center;
+            margin: 20px;
+        }
+
+        .boton {
+            padding: 10px 30px;
+            font-size: 1.1rem;
+            color: white;
+            background-color: #000814;
+            border: none;
+            border-radius: 5px;
+            margin: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .boton:hover {
+            background-color: #001d3d;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        /* Responsividad */
+        @media (max-width: 768px) {
+            .texto-imagen-principal {
+                font-size: 1.5rem;
+                padding: 15px;
+            }
+
+            .descripcion {
+                padding: 15px;
+                font-size: 1rem;
+            }
+
+            .titulo-rojo {
+                font-size: 2rem;
+            }
+
+            .boton {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .texto-imagen-principal {
+                font-size: 1.2rem;
+                width: 90%;
+            }
+
+            .descripcion {
+                padding: 10px;
+                font-size: 0.9rem;
+            }
+
+            .titulo-rojo {
+                font-size: 1.8rem;
+            }
+
+            .boton {
+                font-size: 0.9rem;
+                padding: 8px 15px;
+            }
+        }
+    </style>
 </head>
-
-<style>
-    body {
-        font-family: 'Poppins', Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        padding-top: 68px;
-        background-color: #f5f5f5;
-    }
-
-    .imagen-ballenas {
-        position: relative;
-        width: 100%;
-        height: 80vh;
-        background: url('{{ asset("images/ballenas.jpg") }}') no-repeat center center/cover;
-        background-size: cover;
-        background-position: center;
-    }
-
-    .texto-imagen-principal {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-        color: white;
-        font-size: 2rem;
-        font-weight: 600;
-        background: rgba(0, 0, 0, 0.4);
-        padding: 20px;
-        border-radius: 10px;
-        width: 80%;
-        max-width: 800px;
-    }
-
-    .descripcion {
-        text-align: justify;
-        font-size: 1.1rem;
-        padding: 20px 200px;
-        margin-top: 20px;
-        color: #333;
-        line-height: 1.8;
-    }
-
-    .descripcion p {
-        margin-bottom: 20px;
-    }
-
-    .titulo-rojo {
-        color: red;
-        font-size: 2.5rem;
-        margin-top: 20px;
-        margin-bottom: 10px;
-    }
-
-    .imagen-section {
-        width: 100%;
-        height: auto;
-        margin-top: 20px;
-    }
-
-    .botones {
-        text-align: center;
-    }
-
-    .boton {
-        padding: 10px 30px;
-        font-size: 1.1rem;
-        color: white;
-        background-color: #007bff;
-        border: none;
-        border-radius: 5px;
-        margin: 10px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
-
-    .boton:hover {
-        background-color: #0056b3;
-    }
-</style>
 
 <body>
     <div class="imagen-ballenas">
@@ -144,14 +195,11 @@
         </ul>
     </div>
 
-    <!-- Botones al final -->
     <div class="botones">
         <button class="boton" onclick="window.location.href='{{ url('/') }}'">Volver a Inicio</button>
         <button class="boton" onclick="window.location.href='{{ url('/planes-turisticos') }}'">Conoce sobre nuestros paquetes turísticos</button>
     </div>
-
 </body>
-
 </html>
 
 @endsection

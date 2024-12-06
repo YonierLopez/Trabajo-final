@@ -14,13 +14,14 @@
         }
 
         html, body {
-            height: 100%; /* Asegura que ocupen todo el alto de la pantalla */
+            height: 100%; /* Asegura que el cuerpo ocupe toda la altura */
             display: flex;
             flex-direction: column;
         }
 
         body {
             font-family: Arial, sans-serif;
+            min-height: 100vh; /* Esto asegura que el body ocupe al menos la altura total de la ventana */
         }
 
         main {
@@ -28,8 +29,8 @@
         }
 
         footer {
-            background-color: #caf0f8; /* Azul claro consistente con el navbar */
-            color: #ecf0f1; /* Blanco para los textos */
+            background-color: #000000; 
+            color: #fff;
             padding: 20px 0;
             text-align: center;
             margin-top: auto; /* Esto hace que el footer se fije en la parte inferior */
@@ -38,7 +39,7 @@
 
         .footer-bottom {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             flex-wrap: wrap;
             gap: 20px;
             padding: 20px 10px;
@@ -52,19 +53,19 @@
         .footer-section h4 {
             font-size: 1.2em;
             margin-bottom: 15px;
-            color: #ecf0f1; /* Blanco para los títulos */
+            color: #ffd700; 
         }
 
         .footer-section p,
         .footer-section a {
             margin-bottom: 5px;
             font-size: 0.95em;
-            color: #ddd; /* Gris claro para los textos */
+            color: #ddd; 
             text-decoration: none;
         }
 
         .footer-section a:hover {
-            color: #f39c12; /* Naranja brillante en los enlaces */
+            color: #f39c12;
             text-decoration: underline;
         }
 
@@ -76,17 +77,24 @@
             padding-top: 20px;
         }
 
-        /* Estilo para el copywriting al final */
+        .footer-social a {
+            color: #fff;
+            transition: color 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: #ffd700; 
+        }
+
         .footer-copy {
             font-size: 0.9em;
             color: #ddd;
-            background-color: #03045e; /* Fondo oscuro para el copywriting */
-            width: 100%; /* Asegura que ocupe todo el ancho */
+            background-color: #03045e;
+            width: 100%;
             text-align: center;
             padding: 10px 0;
         }
 
-        /* Responsivo para pantallas pequeñas */
         @media (max-width: 768px) {
             .footer-bottom {
                 flex-direction: column;
@@ -104,6 +112,10 @@
     </style>
 </head>
 <body>
+
+    <main>
+        <!-- Aquí va el contenido de tu página -->
+    </main>
 
     <footer>
         <div class="footer-bottom">
@@ -130,11 +142,21 @@
                 <p><a href="{{ route('contacto') }}">CONTACTO</a></p>
             </div>
         </div>
+
+        <!-- Redes sociales (iconos) -->
+        <div class="footer-social">
+            <a href="#" class="fab fa-facebook-f" target="_blank"></a>
+            <a href="#" class="fab fa-twitter" target="_blank"></a>
+            <a href="#" class="fab fa-instagram" target="_blank"></a>
+        </div>
     </footer>
 
     <!-- Copywriting -->
     <div class="footer-copy">
         <p>&copy; 2024 Tu Empresa. Todos los derechos reservados.</p>
     </div>
+    
+    <!-- Font Awesome (para íconos de redes sociales) -->
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </body>
 </html>

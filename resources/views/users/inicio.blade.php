@@ -9,18 +9,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Explora Colombia</title>
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            font-family: 'Arial', sans-serif;
-            color: white;
-            background: #1e1e2f;
-            overflow-x: hidden;
-        }
+        
 
         /* Ajuste para el espacio debajo del navbar */
         .content-wrapper {
-            margin-top: 120px; /* Ajusta según el tamaño del navbar */
+            margin-top: 120px;
         }
 
         /* Definir el estilo del header */
@@ -30,7 +23,7 @@
             align-items: center;
             text-align: center;
             background: url('https://images.pexels.com/photos/142497/pexels-photo-142497.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center/cover;
-            height: 80vh; /* Ajuste para que el header no ocupe toda la pantalla */
+            height: 90vh; /* Ajuste para que el header no ocupe toda la pantalla */
             position: relative;
         }
 
@@ -67,14 +60,14 @@
             font-size: 1em;
             color: white;
             text-decoration: none;
-            background-color: #ff6b6b;
+            background-color: #283618;
             border-radius: 5px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease-in-out;
         }
 
         .header-section .btn:hover {
-            background-color: #ff4a4a;
+            background-color: #606c38;
             transform: translateY(-3px);
         }
 
@@ -84,11 +77,11 @@
             justify-content: center;
             gap: 20px;
             padding: 40px 20px;
-            background-color: #282a36;
+            background-color: #283618;
         }
 
         .card {
-            background: #44475a;
+            background: #606c38;
             color: white;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -124,14 +117,14 @@
             font-size: 1em;
             color: white;
             text-decoration: none;
-            background-color: #ff6b6b;
+            background-color: #84a98c;
             border-radius: 5px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease-in-out;
         }
 
         .card .btn:hover {
-            background-color: #ff4a4a;
+            background-color: #cad2c5;
             transform: translateY(-3px);
         }
     </style>
@@ -143,28 +136,28 @@
             <div class="content">
                 <h1>Explora Colombia</h1>
                 <p>Un paraíso por descubrir</p>
-                <a href="#explorar" class="btn">Inicia tu aventura</a>
+                <a href="{{ route('planesTuristicos') }}" class="btn">Inicia tu aventura</a>
             </div>
         </section>
 
         <section id="explorar" class="sections">
             <div class="card">
-                <img src="https://images.pexels.com/photos/2884864/pexels-photo-2884864.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Acampa bajo las estrellas">
+                <img src="{{ asset('images/fonfopi.jpg') }}" alt="Acampa bajo las estrellas">
                 <h3>Acampa Bajo las Estrellas</h3>
                 <p>Vive noches mágicas bajo cielos despejados en los Andes colombianos.</p>
-                <a href="#" class="btn">Descubre más</a>
+                <a href="{{ route('montañas') }}" class="btn">Descubre más</a>
             </div>
             <div class="card">
                 <img src="https://images.pexels.com/photos/4666753/pexels-photo-4666753.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Ver ballenas jorobadas">
                 <h3>Encuentra Ballenas Jorobadas</h3>
-                <p>Descubre el espectáculo de la naturaleza en el Pacífico colombiano.</p>
-                <a href="#" class="btn">Descubre más</a>
+                <p>Descubre los tres lugares en los que puedes hallar ballenas jorobadas</p>
+                <a href="{{ route('Ballenas') }}" class="btn">Descubre más</a>
             </div>
             <div class="card">
                 <img src="https://images.pexels.com/photos/13833970/pexels-photo-13833970.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Planea tu aventura">
                 <h3>Planea Tu Próxima Aventura</h3>
                 <p>Recorre las playas del Caribe, las selvas del Amazonas y mucho más.</p>
-                <a href="#" class="btn">Descubre más</a>
+                <a href="{{ route('planesTuristicos') }}" class="btn">Descubre lo que tenemos para ti</a>
             </div>
         </section>
     </div>
