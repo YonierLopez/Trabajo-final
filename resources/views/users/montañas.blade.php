@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Turismo de Naturaleza en las Montañas de Colombia</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}"> <!-- Enlace al archivo CSS -->
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
@@ -50,10 +50,18 @@
     .descripcion {
         text-align: justify;
         font-size: 1.1rem;
-        padding: 20px 200px;
+        padding: 20px 15%;
         margin-top: 20px;
         color: #333;
         line-height: 1.8;
+    }
+
+    .descripcion img {
+        width: 100%;
+        max-height: 400px;
+        object-fit: cover;
+        margin: 20px 0;
+        border-radius: 10px;
     }
 
     .botones {
@@ -80,7 +88,7 @@
     /* Responsividad */
     @media (max-width: 1024px) {
         .descripcion {
-            padding: 20px 50px;
+            padding: 20px 10%;
         }
 
         .texto-imagen-principal {
@@ -91,7 +99,7 @@
 
     @media (max-width: 768px) {
         .descripcion {
-            padding: 15px 30px;
+            padding: 15px 8%;
             font-size: 1rem;
         }
 
@@ -118,8 +126,12 @@
         }
 
         .descripcion {
-            padding: 10px 20px;
+            padding: 10px 5%;
             font-size: 0.9rem;
+        }
+
+        .descripcion img {
+            max-height: 300px;
         }
 
         .boton {
@@ -136,7 +148,6 @@
         </div>
     </div>
 
-    
     <div class="descripcion">
         <p>Hoy acompáñenos a realizar un recorrido por las montañas de este bello país, a descubrir los misterios y encantos que resguardan…</p>
         
@@ -168,16 +179,11 @@
 
     </div>
 
-   
-
-    <!-- Botones al final -->
     <div class="botones">
         <button class="boton" onclick="window.location.href='{{ url('/') }}'">Volver a Inicio</button>
         <button class="boton" onclick="window.location.href='{{ url('/planes-turisticos') }}'">Conoce sobre nuestros paquetes turísticos</button>
     </div>
-
 </body>
-
 </html>
 
 @endsection

@@ -58,25 +58,19 @@ class PageController extends Controller
     {
         return view('users.medellin'); // vista contacto.blade.php
     }
-    public function cali()
-    {
-        return view('users.cali'); // vista contacto.blade.php
-    }
-    public function santam()
-    {
-        return view('users.santam'); // vista contacto.blade.php
-    }
+
     public function popayan()
     {
         return view('users.popayan'); // vista contacto.blade.php
     }
-    public function amazonas()
+
+    public function reserva()
     {
-        return view('users.amazonas'); // vista contacto.blade.php
-    }
-    public function laguajira()
-    {
-        return view('users.laguajira'); // vista contacto.blade.php
+        return view('users.reserva'); // vista contacto.blade.php
     }
 
+    public function compra()
+    {
+        return view('users.compra'); // vista contacto.blade.php
+    }
 }

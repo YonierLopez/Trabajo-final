@@ -197,7 +197,7 @@
 
     <div class="botones">
         <button class="boton" onclick="window.location.href='{{ url('/') }}'">Volver a Inicio</button>
-        <button class="boton" onclick="window.location.href='{{ url('/planes-turisticos') }}'">Conoce sobre nuestros paquetes turísticos</button>
+        <button class="boton" onclick="window.location.href='{{ url('/planes-turisticos')}}'">Conoce sobre nuestros paquetes turísticos</button>
     </div>
 </body>
 </html>

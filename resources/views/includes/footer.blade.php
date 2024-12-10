@@ -121,8 +121,8 @@
         <div class="footer-bottom">
             <div class="footer-section">
                 <h4>LÍNEAS DE ATENCIÓN</h4>
-                <p>Calle No #-# Piso #-#<br>Popayán - Colombia</p>
-                <p>+57 347776049</p>
+                <p>Cl 4A Nro <br>Popayán - Colombia</p>
+                <p>314 7776049</p>
                 <p>Fax: +57 601 5600104</p>
                 <p>Lun - Vi 8:30 A.M. - 5:30 P.M</p>
             </div>
@@ -131,8 +131,8 @@
                 <p>Morro</p>
                 <p>Parque Caldas</p>
                 <p>Esmeralda</p>
-                <p>Turismo</p>
-                <p>Marca País</p>
+                <p>Termales</p>
+                <p>Casa José de Caldas</p>
             </div>
             <div class="footer-section">
                 <h4>ENLACES DE INTERÉS</h4>

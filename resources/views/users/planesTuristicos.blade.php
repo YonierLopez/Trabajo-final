@@ -15,7 +15,7 @@
         }
 
         .fondos {
-            background-image: url('{{ asset('images/Paquetes.avif') }}');
+            background-image: url('{{ asset('images/paquetes.avif') }}');
             background-size: cover;
             background-position: center;
             height: 85vh;
@@ -229,28 +229,6 @@
             </div>
         </a>
 
-         <!-- Card for Cali -->
-         <a href="{{ route('cali') }}">
-            <div class="card">
-                <div class="wrapper">
-                    <img src="https://images.pexels.com/photos/27661603/pexels-photo-27661603/free-photo-of-paisaje-naturaleza-punto-de-referencia-agua.jpeg?auto=compress&cs=tinysrgb&w=600" class="cover-image" />
-                </div>
-                <div class="title">Cali</div>
-                <img src="https://images.pexels.com/photos/13708781/pexels-photo-13708781.png?auto=compress&cs=tinysrgb&w=600" class="character" />
-            </div>
-        </a>
-
-        <!-- Card for Santa Marta -->
-        <a href="{{ route('santam') }}">
-            <div class="card">
-                <div class="wrapper">
-                    <img src="https://images.pexels.com/photos/2106245/pexels-photo-2106245.jpeg?auto=compress&cs=tinysrgb&w=600" class="cover-image" />
-                </div>
-                <div class="title">Santa Marta</div>
-                <img src="https://images.pexels.com/photos/27375961/pexels-photo-27375961/free-photo-of-mar-vuelo-paisaje-playa.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class="character" />
-            </div>
-        </a>
-
         <!-- Card for Popayán -->
         <a href="{{ route('popayan') }}">
             <div class="card">
@@ -261,26 +239,6 @@
                 <img src="https://images.unsplash.com/photo-1522086605197-deac1ce7566c?q=80&w=1915&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="character" />
             </div>
         </a>
-
-        <a href="{{ route('amazonas') }}">
-            <div class="card">
-                <div class="wrapper">
-                    <img src="https://images.pexels.com/photos/13803453/pexels-photo-13803453.jpeg?auto=compress&cs=tinysrgb&w=600" class="cover-image" />
-                </div>
-                <div class="title">Amazonas</div>
-                <img src="https://images.pexels.com/photos/28587127/pexels-photo-28587127/free-photo-of-atardecer-en-el-amazonas.jpeg?auto=compress&cs=tinysrgb&w=600" class="character" />
-            </div>
-        </a>
-
-        <a href="{{ route('laguajira') }}">
-            <div class="card">
-                <div class="wrapper">
-                    <img src="https://images.pexels.com/photos/28123501/pexels-photo-28123501/free-photo-of-mar-paisaje-naturaleza-playa.jpeg?auto=compress&cs=tinysrgb&w=600" class="cover-image" />
-                </div>
-                <div class="title">La Guajira</div>
-                <img src="https://images.pexels.com/photos/16041405/pexels-photo-16041405/free-photo-of-mar-paisaje-arena-pueblo.jpeg?auto=compress&cs=tinysrgb&w=600" class="character" />
-            </div>
-        </a>
     </div>
 
     <div class="buttons-container">
@@ -288,7 +246,7 @@
             <a href="{{ route('comentarios.index') }}">Deja tus opiniones aquí</a>
         </div>
         <div class="comments-btn">
-            <a href="#reserve">Reservar ahora mismo</a>
+            <a href="{{ route('reserva') }}">Reservar ahora mismo</a>
         </div>
     </div>
 </body>

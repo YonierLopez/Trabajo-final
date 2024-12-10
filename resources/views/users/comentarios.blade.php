@@ -1,194 +1,244 @@
 @extends('layouts.app')
 
 @section('content')
+
+<!-- Vista Comentarios -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comentarios - Agencia de Viajes</title>
-    <style>
-        /* Establecemos una altura mínima del 100vh para el cuerpo */
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            padding-top: 68px;
-            min-height: 100vh; /* Asegura que el body tenga al menos el 100% de la altura de la pantalla */
-            display: flex;
-            flex-direction: column;
-            color: white;
-        }
-        
-        /* Fondo con la imagen y configuración para que cubra la pantalla */
-        .fondos {
-            background-image: url('{{ asset('images/fondocom.png') }}');
-            background-size: cover;
-            background-position: center;
-            height: 100vh;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario de Comentarios</title>
+  <style>
+    /* Estilos generales */
+    body {
+      margin: 0;
+      padding-top: 120px;
+      font-family: "Raleway", sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      background-color: #edf2f4;
+      background-image: url('https://www.transparenttextures.com/patterns/black-linen-embossed.png');
+      background-size: cover;
+      -webkit-font-smoothing: antialiased;
+    }
 
-        .hero {
-            text-align: center;
-            margin-bottom: 50px;
-            opacity: 0;
-            animation: fadeIn 2s forwards;
-        }
+    .form_wrap {
+      width: 90%;
+      margin: 50px auto;
+      display: flex;
+      flex-wrap: wrap;
+      background: #fff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+    }
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin: 0;
-            font-weight: bold;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-        }
+    .cantact_info {
+      width: 38%;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      background: url('https://images.pexels.com/photos/886051/pexels-photo-886051.jpeg') no-repeat center center;
+      background-size: cover;
+    }
 
-        .hero p {
-            font-size: 1.5rem;
-            margin: 15px 0;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
-            font-weight: bold;
-        }
+    .cantact_info::before {
+      content: '';
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: rgba(0, 0, 0, 0.6);
+    }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    .info_title,
+    .info_items {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
 
-        /* Ajustar el estilo para centrar y aumentar el tamaño del texto */
-        .container h2 {
-            font-size: 2.5rem; /* Aumentamos el tamaño */
-            text-align: center;
-            color: #fff; /* Color blanco para contraste */
-            margin-bottom: 30px; /* Espacio debajo del título */
-        }
+    .info_title {
+      margin-bottom: 40px;
+    }
 
-        .container {
-            background: rgba(0, 0, 0, 0.5); /* Fondo oscuro para que el texto sea legible */
-            padding: 40px;
-            border-radius: 10px;
-            max-width: 800px;
-            margin: 0 auto;
-            
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        }
+    .info_title span {
+      font-size: 60px;
+      display: block;
+      margin-bottom: 15px;
+    }
 
-        .comments-btn a {
-            display: inline-block;
-            background-color: #ff6600; /* Color naranja más fuerte para mayor contraste */
-            padding: 12px 25px;
-            color: white;
-            font-size: 1.2rem;
-            font-weight: bold;
-            border-radius: 5px;
-            text-decoration: none;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-            margin-top: 20px;
-            text-align: center;
-        }
+    .info_title h2 {
+      font-size: 30px;
+      font-weight: bold;
+    }
 
-        .comments-btn a:hover {
-            background-color: #ff4500; /* Cambio de color al pasar el mouse */
-            transform: translateY(-3px);
-        }
+    .info_items p {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
 
-        .form-group {
-            margin-bottom: 15px;
-        }
+    .form_contact {
+      width: 62%;
+      padding: 20px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
 
-        .form-group label {
-            font-size: 1.1rem;
-            color: #fff;
-            font-weight: bold;
-        }
+    .form_contact h2 {
+      text-align: center;
+      font-size: 25px;
+      font-weight: 600;
+      color: #303030;
+      margin-bottom: 20px;
+    }
 
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 10px;
-            border-radius: 5px;
-            border: none;
-            background-color: #fff;
-            color: #333;
-            font-size: 1rem;
-        }
+    .user_info {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
 
-        .form-group textarea {
-            height: 150px;
-            resize: none;
-        }
+    .form_contact label {
+      font-weight: 600;
+    }
 
-        .form-group button {
-            background-color: #ff6600; /* Color del botón */
-            color: white;
-            font-size: 1.1rem;
-            font-weight: bold;
-            padding: 12px 25px;
-            border-radius: 5px;
-            border: none;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            width: 100%;
-        }
+    .form_contact input,
+    .form_contact textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-family: 'Open sans';
+      font-size: 14px;
+      color: #333;
+    }
 
-        .form-group button:hover {
-            background-color: #ff4500; /* Cambio al pasar el mouse */
-        }
+    .form_contact textarea {
+      resize: none;
+    }
 
-        /* Se agrega el margen inferior para separar el botón del pie de página */
-        .comments-btn {
-            margin-bottom: 20px; /* Espacio entre el botón y el pie de página */
-        }
+    .form_contact input[type="submit"] {
+      width: 180px;
+      background: #8d6e63;
+      padding: 10px;
+      border: none;
+      border-radius: 25px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      align-self: center;
+    }
 
-    </style>
+    .form_contact input[type="submit"]:hover {
+      background: #6d4c41;
+    }
+
+    .comments_section {
+      width: 100%;
+      padding: 20px;
+      background: #f9f9f9;
+      border-radius: 10px;
+      margin-top: 40px;
+    }
+
+    .comment {
+      padding: 15px;
+      margin-bottom: 20px;
+      background: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .comment .comment-text {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .comment .rating {
+      font-size: 14px;
+      color: #ff9800;
+    }
+
+    .comments_section h3 {
+      font-size: 22px;
+      font-weight: 600;
+      color: #303030;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 1024px) {
+      .form_wrap {
+        width: 95%;
+      }
+      .cantact_info {
+        text-align: center;
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .info_title span {
+        font-size: 40px;
+      }
+      .info_title h2 {
+        font-size: 20px;
+      }
+      .form_contact h2 {
+        font-size: 20px;
+      }
+      .form_contact input[type="submit"] {
+        width: 100%;
+        border-radius: 5px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-  <div class="fondos">
+  <section class="form_wrap">
+    <section class="cantact_info">
+      <section class="info_title">
+        <span class="fa fa-user-circle"></span>
+        <h2>DEJA TU OPINIÓN</h2>
+      </section>
+      <section class="info_items">
+        <p><span class="fa fa-envelope"></span> vacaciones_top@gmail.com</p>
+        <p><span class="fa fa-mobile"></span> +57 3225165648</p>
+      </section>
+    </section>
 
-    <div class="hero">
-        <h1>¡Comparte tu experiencia!</h1>
-        <p>Queremos saber cómo fue tu viaje y qué te parece nuestro servicio. ¡Tu opinión es importante!</p>
-    </div>
+    <form action="{{ route('comments.store') }}" method="POST" class="form_contact">
+      @csrf
+      <h2>Tu comentario es muy importante para nosotros</h2>
+      <div class="user_info">
+        <label for="comment">Comentario *</label>
+        <textarea id="comment" name="comment" placeholder="Escribe tu comentario aquí" required></textarea>
 
-    <div class="container">
-        <h2>Deja tu comentario y valoración</h2>
+        <label for="rating">Valoración *</label>
+        <select id="rating" name="rating" required>
+          <option value="1">1 - Muy Malo</option>
+          <option value="2">2 - Malo</option>
+          <option value="3">3 - Regular</option>
+          <option value="4">4 - Bueno</option>
+          <option value="5">5 - Excelente</option>
+        </select>
 
-        <form action="{{ route('comentarios.store') }}" method="POST">
-            @csrf
+        <input type="submit" value="Enviar Comentario">
+      </div>
+    </form>
+  </section>
 
-            <div class="form-group">
-                <label for="comment">Comentario</label>
-                <textarea name="comment" id="comment" placeholder="Escribe tu comentario aquí..." required></textarea>
-            </div>
-
-            <div class="form-group">
-                <label for="rating">Valoración</label>
-                <select name="rating" id="rating" required>
-                    <option value="" disabled selected>Selecciona una valoración</option>
-                    <option value="1">1 - Muy Malo</option>
-                    <option value="2">2 - Malo</option>
-                    <option value="3">3 - Regular</option>
-                    <option value="4">4 - Bueno</option>
-                    <option value="5">5 - Excelente</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <button type="submit">Enviar Comentario</button>
-            </div>
-        </form>
-
-
-    </div>
-
-  </div>
+  
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
 </body>
 </html>
